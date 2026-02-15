@@ -62,7 +62,9 @@ class LibraryComponent extends React.Component {
         // show one frame with a loading spinner.
         setTimeout(() => {
             this.setState({
-                canDisplay: true
+                canDisplay: true,
+                filterQuery: '',
+                selectedTag: 'scratch'
             });
         });
         if (this.props.setStopHandler) this.props.setStopHandler(this.handlePlayingEnd);

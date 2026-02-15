@@ -10,6 +10,8 @@
     <% if (htmlWebpackPlugin.options.root === "/" || htmlWebpackPlugin.options.root === "") { %>
       <link rel="manifest" href="<%= htmlWebpackPlugin.options.root %>manifest.webmanifest">
     <% } %>
+    <script src="<%= htmlWebpackPlugin.options.root %>compiler/compiler.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.root %>welcome.js"></script>
     <style>
       .splash-screen {
         position: absolute;
@@ -98,7 +100,7 @@
         'use strict';
 
         var theme = '';
-        var accent = '#ff4c4c';
+        var accent = '#4c97ff';
 
         try {
           var themeSetting = localStorage.getItem('tw:theme');

@@ -365,6 +365,8 @@ const TWStateManager = function (WrappedComponent) {
                 this.props.vm.extensionManager.loadExtensionURL(extension);
             }
 
+            this.props.vm.extensionManager.loadExtensionURL(new URL("compiler/extension.js", `${location.protocol}//${location.host}${location.pathname}`).href);
+
             const routerCallbacks = {
                 onSetProjectId: this.onSetProjectId,
                 onSetIsPlayerOnly: this.onSetIsPlayerOnly,

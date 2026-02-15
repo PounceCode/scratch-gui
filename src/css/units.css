@@ -10,7 +10,7 @@ $sprite-info-height: 6rem;
 $stage-menu-height: 2.75rem;
 
 $library-header-height: 3.125rem;
-$library-filter-bar-height: 2.5rem;
+$library-filter-bar-height: 0;
 
 $stage-standard-border-width: 0.0625rem;
 $stage-full-screen-border-width: 0.0625rem;

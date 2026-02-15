@@ -1,0 +1,974 @@
+{
+    "blocks": {
+        "BR7rEQp5N63KisB": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "W2DG2t4YcKuVWPR",
+            "inputs": {
+                "[ee3VrLV29y+{btMs#f9": [
+                    1,
+                    "Ub6jHlRjUun8b6p"
+                ],
+                "w[8Lje3yAKs*0NHxjz[M": [
+                    1,
+                    "yq9KDWKuRD21brt"
+                ]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.endsWith %s %s",
+                "argumentids": "[\"[ee3VrLV29y+{btMs#f9\",\"w[8Lje3yAKs*0NHxjz[M\"]",
+                "argumentnames": "[\"string\",\"thing\"]",
+                "argumentdefaults": "[\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "Q079uqpeYWMQBep": {
+            "opcode": "procedures_definition",
+            "next": "sGJ9SCLzNIzkT3X",
+            "parent": null,
+            "inputs": {
+                "custom_block": [
+                    1,
+                    "GJLtYMoZC8LCSGd"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 44,
+            "y": 44
+        },
+        "GJLtYMoZC8LCSGd": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "Q079uqpeYWMQBep",
+            "inputs": {
+                "gc(:2hjB9.Y2fhGUap|F": [
+                    1,
+                    "SyZFdmpQs8ySRaY"
+                ],
+                "YGNe([qppwes@1Lnh6,V": [
+                    1,
+                    "s4YKtqJe0fXVJgZ"
+                ],
+                "5`W-}+@Ag/,s@xJ#K6vq": [
+                    1,
+                    "LWO43eFQGonQcRK"
+                ]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.endsWith_substring %s %s %s",
+                "argumentids": "[\"gc(:2hjB9.Y2fhGUap|F\",\"YGNe([qppwes@1Lnh6,V\",\"5`W-}+@Ag/,s@xJ#K6vq\"]",
+                "argumentnames": "[\"start\",\"end\",\"string\"]",
+                "argumentdefaults": "[\"\",\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "SyZFdmpQs8ySRaY": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "GJLtYMoZC8LCSGd",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "start",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "s4YKtqJe0fXVJgZ": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "GJLtYMoZC8LCSGd",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "end",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "LWO43eFQGonQcRK": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "GJLtYMoZC8LCSGd",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "string",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "5Jf2V2vXmKDqEhL": {
+            "opcode": "data_setvariableto",
+            "next": "lBTq5o5Q5Lz9cjr",
+            "parent": "sGJ9SCLzNIzkT3X",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "DTCoZYhHu12YUI2",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_i",
+                    "F^-F36FFkDg+5XTgEE9J"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "DTCoZYhHu12YUI2": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "5Jf2V2vXmKDqEhL",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "start",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "sGJ9SCLzNIzkT3X": {
+            "opcode": "control_if",
+            "next": "5Jf2V2vXmKDqEhL",
+            "parent": "Q079uqpeYWMQBep",
+            "inputs": {
+                "SUBSTACK": [
+                    2,
+                    "n2sAGmFrgo1FRwZ"
+                ],
+                "CONDITION": [
+                    2,
+                    "SUZH6cJujjd5HRH"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "2CaonQHo1NxEsqx": {
+            "opcode": "operator_lt",
+            "next": null,
+            "parent": "SUZH6cJujjd5HRH",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "aOsuajvIwuDRRQl",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    3,
+                    "HjaHV8hZaMrUuRl",
+                    [
+                        10,
+                        "50"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "HjaHV8hZaMrUuRl": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "2CaonQHo1NxEsqx",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "start",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "QlkstJuBtipEM9e": {
+            "opcode": "control_repeat_until",
+            "next": "hARjiYFuPO21KU0",
+            "parent": "La0c7Gkm1cBDtbH",
+            "inputs": {
+                "CONDITION": [
+                    2,
+                    "ron6wJJyq31IZbC"
+                ],
+                "SUBSTACK": [
+                    2,
+                    "gHU6IeHyqUp8zXK"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "ron6wJJyq31IZbC": {
+            "opcode": "operator_gt",
+            "next": null,
+            "parent": "QlkstJuBtipEM9e",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_endsWith_substring_i",
+                        "F^-F36FFkDg+5XTgEE9J"
+                    ],
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_endsWith_substring_end",
+                        "pegvrl?YM2BlzoCMYvnd"
+                    ],
+                    [
+                        10,
+                        "50"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "yuXwIb9vy29m0CF": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "nXMr5iXI6EOUY5L",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "end",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "LXxGzJBjwKOiRhH": {
+            "opcode": "data_changevariableby",
+            "next": null,
+            "parent": "gHU6IeHyqUp8zXK",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        4,
+                        "1"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_i",
+                    "F^-F36FFkDg+5XTgEE9J"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "gHU6IeHyqUp8zXK": {
+            "opcode": "data_setvariableto",
+            "next": "LXxGzJBjwKOiRhH",
+            "parent": "QlkstJuBtipEM9e",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "mzTPrkyIdo5u0yy",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_value",
+                    "/?~(0Ga5b8*o!X$Tdd8z"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "mzTPrkyIdo5u0yy": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "gHU6IeHyqUp8zXK",
+            "inputs": {
+                "STRING1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_endsWith_substring_value",
+                        "/?~(0Ga5b8*o!X$Tdd8z"
+                    ],
+                    [
+                        10,
+                        "apple "
+                    ]
+                ],
+                "STRING2": [
+                    3,
+                    "ccdR8fUVM62Egxa",
+                    [
+                        10,
+                        "banana"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "ccdR8fUVM62Egxa": {
+            "opcode": "operator_letter_of",
+            "next": null,
+            "parent": "mzTPrkyIdo5u0yy",
+            "inputs": {
+                "LETTER": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_endsWith_substring_i",
+                        "F^-F36FFkDg+5XTgEE9J"
+                    ],
+                    [
+                        6,
+                        "1"
+                    ]
+                ],
+                "STRING": [
+                    3,
+                    "aMonRdpcfcvzYsf",
+                    [
+                        10,
+                        "apple"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "aMonRdpcfcvzYsf": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "ccdR8fUVM62Egxa",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "string",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "lBTq5o5Q5Lz9cjr": {
+            "opcode": "data_setvariableto",
+            "next": "La0c7Gkm1cBDtbH",
+            "parent": "5Jf2V2vXmKDqEhL",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_value",
+                    "/?~(0Ga5b8*o!X$Tdd8z"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "GwkTjzMf5H7Bsq5": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "0QwGErDv8PRCWfQ",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "end",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "0QwGErDv8PRCWfQ": {
+            "opcode": "operator_gt",
+            "next": null,
+            "parent": "La0c7Gkm1cBDtbH",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "GwkTjzMf5H7Bsq5",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "u6OwH3l0JQtljME": {
+            "opcode": "operator_length",
+            "next": null,
+            "parent": "Yzpl6MuBOzoH7zN",
+            "inputs": {
+                "STRING": [
+                    3,
+                    "ZuhOtMuFxcY75nQ",
+                    [
+                        10,
+                        "apple"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "ZuhOtMuFxcY75nQ": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "u6OwH3l0JQtljME",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "string",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "ZkcFqXvQeEL26KX": {
+            "opcode": "operator_gt",
+            "next": null,
+            "parent": "SUZH6cJujjd5HRH",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "luhlpGOVStpskUl",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "luhlpGOVStpskUl": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "ZkcFqXvQeEL26KX",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "end",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "SUZH6cJujjd5HRH": {
+            "opcode": "operator_and",
+            "next": null,
+            "parent": "sGJ9SCLzNIzkT3X",
+            "inputs": {
+                "OPERAND1": [
+                    2,
+                    "ZkcFqXvQeEL26KX"
+                ],
+                "OPERAND2": [
+                    2,
+                    "2CaonQHo1NxEsqx"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "aOsuajvIwuDRRQl": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "2CaonQHo1NxEsqx",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "end",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "nXMr5iXI6EOUY5L": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "La0c7Gkm1cBDtbH",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "yuXwIb9vy29m0CF",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_end",
+                    "pegvrl?YM2BlzoCMYvnd"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "La0c7Gkm1cBDtbH": {
+            "opcode": "control_if_else",
+            "next": "QlkstJuBtipEM9e",
+            "parent": "lBTq5o5Q5Lz9cjr",
+            "inputs": {
+                "SUBSTACK": [
+                    2,
+                    "nXMr5iXI6EOUY5L"
+                ],
+                "CONDITION": [
+                    2,
+                    "0QwGErDv8PRCWfQ"
+                ],
+                "SUBSTACK2": [
+                    2,
+                    "Yzpl6MuBOzoH7zN"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "Yzpl6MuBOzoH7zN": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "La0c7Gkm1cBDtbH",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "u6OwH3l0JQtljME",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_end",
+                    "pegvrl?YM2BlzoCMYvnd"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "W2DG2t4YcKuVWPR": {
+            "opcode": "procedures_definition",
+            "next": "D5FTJbFfwNRyNTO",
+            "parent": null,
+            "inputs": {
+                "custom_block": [
+                    1,
+                    "BR7rEQp5N63KisB"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 61,
+            "y": 901
+        },
+        "Ub6jHlRjUun8b6p": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "BR7rEQp5N63KisB",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "string",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "yq9KDWKuRD21brt": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "BR7rEQp5N63KisB",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "thing",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "hARjiYFuPO21KU0": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "QlkstJuBtipEM9e",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_endsWith_substring_value",
+                        "/?~(0Ga5b8*o!X$Tdd8z"
+                    ],
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_output",
+                    "l=pNk@(C._m|_@Ctoy(("
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "n2sAGmFrgo1FRwZ": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "sGJ9SCLzNIzkT3X",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_endsWith_substring_output",
+                    "l=pNk@(C._m|_@Ctoy(("
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "D5FTJbFfwNRyNTO": {
+            "opcode": "procedures_call",
+            "next": "rKavjNMfBFPJm2G",
+            "parent": "W2DG2t4YcKuVWPR",
+            "inputs": {
+                "gc(:2hjB9.Y2fhGUap|F": [
+                    3,
+                    "AiOPtsbwOcqhyYe",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "YGNe([qppwes@1Lnh6,V": [
+                    1,
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "5`W-}+@Ag/,s@xJ#K6vq": [
+                    3,
+                    "hO2uSmNAr224xF1",
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.endsWith_substring %s %s %s",
+                "argumentids": "[\"gc(:2hjB9.Y2fhGUap|F\",\"YGNe([qppwes@1Lnh6,V\",\"5`W-}+@Ag/,s@xJ#K6vq\"]",
+                "warp": "true"
+            }
+        },
+        "rKavjNMfBFPJm2G": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "D5FTJbFfwNRyNTO",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "AUckDVF6RVyyBDv",
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "AUckDVF6RVyyBDv": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "rKavjNMfBFPJm2G",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "AARKxXV6J7kpx2J",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_endsWith_substring_output",
+                        "l=pNk@(C._m|_@Ctoy(("
+                    ],
+                    [
+                        10,
+                        "50"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "AARKxXV6J7kpx2J": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "AUckDVF6RVyyBDv",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "thing",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "XBAyDoLxRzyi71O": {
+            "opcode": "operator_length",
+            "next": null,
+            "parent": "1FvI9qggwH3aaAh",
+            "inputs": {
+                "STRING": [
+                    3,
+                    "E0EVu7fROMOZpyc",
+                    [
+                        10,
+                        "apple"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "E0EVu7fROMOZpyc": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "XBAyDoLxRzyi71O",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "string",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "1FvI9qggwH3aaAh": {
+            "opcode": "operator_subtract",
+            "next": null,
+            "parent": "AiOPtsbwOcqhyYe",
+            "inputs": {
+                "NUM1": [
+                    3,
+                    "XBAyDoLxRzyi71O",
+                    [
+                        4,
+                        ""
+                    ]
+                ],
+                "NUM2": [
+                    3,
+                    "gmRRRilYztWOBPv",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "gmRRRilYztWOBPv": {
+            "opcode": "operator_length",
+            "next": null,
+            "parent": "1FvI9qggwH3aaAh",
+            "inputs": {
+                "STRING": [
+                    3,
+                    "ZybF738oBoRYrJ2",
+                    [
+                        10,
+                        "apple"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "ZybF738oBoRYrJ2": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "gmRRRilYztWOBPv",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "thing",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "hO2uSmNAr224xF1": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "D5FTJbFfwNRyNTO",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "string",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "AiOPtsbwOcqhyYe": {
+            "opcode": "operator_add",
+            "next": null,
+            "parent": "D5FTJbFfwNRyNTO",
+            "inputs": {
+                "NUM1": [
+                    3,
+                    "1FvI9qggwH3aaAh",
+                    [
+                        4,
+                        ""
+                    ]
+                ],
+                "NUM2": [
+                    1,
+                    [
+                        4,
+                        "1"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        }
+    },
+    "vars": {
+        "F^-F36FFkDg+5XTgEE9J": [
+            "$TB.tmp.fn_endsWith_substring_i",
+            4
+        ],
+        "/?~(0Ga5b8*o!X$Tdd8z": [
+            "$TB.tmp.fn_endsWith_substring_value",
+            "c"
+        ],
+        "pegvrl?YM2BlzoCMYvnd": [
+            "$TB.tmp.fn_endsWith_substring_end",
+            3
+        ],
+        "l=pNk@(C._m|_@Ctoy((": [
+            "$TB.tmp.fn_endsWith_substring_output",
+            "c"
+        ]
+    }
+}

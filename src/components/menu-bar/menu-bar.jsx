@@ -211,6 +211,11 @@ MenuItemLink.propTypes = {
 class MenuBar extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = {
+            isCompiling: false
+        };
+
         bindAll(this, [
             'handleClickSeeInside',
             'handleClickNew',
@@ -227,8 +232,9 @@ class MenuBar extends React.Component {
             'handleKeyPress',
             'handleRestoreOption',
             'getSaveToComputerHandler',
-            'restoreOptionMessage'
-        ]);
+            'restoreOptionMessage',
+            'handleCompile'
+       ]);
     }
     componentDidMount () {
         document.addEventListener('keydown', this.handleKeyPress);
@@ -433,8 +439,27 @@ class MenuBar extends React.Component {
             </MenuLabel>
         );
     }
-    wrapAboutMenuCallback (callback) {
-        return () => {
+
+    handleCompile() {
+        function randomIntFromInterval(min, max) { // min and max included 
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        // Set state to loading
+        this.setState({ isCompiling: true }, async () => {
+            try {
+                await new Promise(resolve => setTimeout(resolve, randomIntFromInterval(300, 600)));
+                // Execute the compilation
+                await compileToScratch();
+            } catch (e) {
+                console.error("Compilation failed:", e);
+            } finally {
+                // Stop the loading icon even if it fails
+                this.setState({ isCompiling: false });
+            }
+        });
+    }
+    wrapAboutMenuCallback(callback) {
+       return () => {
             callback();
             this.props.onRequestCloseAbout();
         };
@@ -1011,6 +1036,35 @@ class MenuBar extends React.Component {
                             />
                         ) : []))}
                     </div>
+
+                    {/* tw: add a compile button */}
+                    <div
+                        className={styles.compileButton}
+                        onClick={this.state.isCompiling ? null : this.handleCompile}
+                        style={{
+                            "cursor": this.state.isCompiling ? "default" : "pointer",
+                            "opacity": this.state.isCompiling ? 0.8 : 1
+                        }}
+                    >
+                        {this.state.isCompiling && <div className={styles.loader} />}
+
+                        <Button className={styles.compileButton}>
+                            {this.state.isCompiling ? (
+                                <FormattedMessage
+                                    defaultMessage="Compiling..."
+                                    description="Label shown while the project is compiling"
+                                    id="tw.menuBar.compiling"
+                                />
+                            ) : (
+                                <FormattedMessage
+                                    defaultMessage="Compile to Scratch"
+                                    description="Button to compile the project to scratch in the menu bar"
+                                    id="tw.compileButton"
+                                />
+                            )}
+                        </Button>
+                    </div>
+
                     {/* tw: add a feedback button */}
                     <div className={styles.menuBarItem}>
                         <a

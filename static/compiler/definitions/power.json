@@ -1,0 +1,1033 @@
+{
+    "blocks": {
+        "0JTlZeed55PA6Gw": {
+            "opcode": "procedures_definition",
+            "next": "hh7uxy1Yq9f4Fc9",
+            "parent": null,
+            "inputs": {
+                "custom_block": [
+                    1,
+                    "jzZY9eYYoh0rlR0"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": -1500,
+            "y": 0
+        },
+        "jzZY9eYYoh0rlR0": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "0JTlZeed55PA6Gw",
+            "inputs": {
+                "/sekqmO-aYnVBe{{`iWu": [
+                    1,
+                    "1ruMfHxIZS8AV0G"
+                ],
+                "ks}ep)Hug|C[,ylFj~5,": [
+                    1,
+                    "d3xNA5f4jr84C9K"
+                ]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.power %s %s",
+                "argumentids": "[\"/sekqmO-aYnVBe{{`iWu\",\"ks}ep)Hug|C[,ylFj~5,\"]",
+                "argumentnames": "[\"base\",\"exponent\"]",
+                "argumentdefaults": "[\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "1ruMfHxIZS8AV0G": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "jzZY9eYYoh0rlR0",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "base",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "d3xNA5f4jr84C9K": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "jzZY9eYYoh0rlR0",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "hh7uxy1Yq9f4Fc9": {
+            "opcode": "control_if_else",
+            "next": null,
+            "parent": "0JTlZeed55PA6Gw",
+            "inputs": {
+                "CONDITION": [
+                    2,
+                    "TAFlYW16VDQyVNN"
+                ],
+                "SUBSTACK": [
+                    2,
+                    "EvUyjD8uIc1ipBf"
+                ],
+                "SUBSTACK2": [
+                    2,
+                    "hUzLjpBOfntJju9"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "TAFlYW16VDQyVNN": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "hh7uxy1Yq9f4Fc9",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "YfanUluGgG4wIgW",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "YfanUluGgG4wIgW": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "TAFlYW16VDQyVNN",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "EvUyjD8uIc1ipBf": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "hh7uxy1Yq9f4Fc9",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        "1"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "hUzLjpBOfntJju9": {
+            "opcode": "control_if_else",
+            "next": null,
+            "parent": "hh7uxy1Yq9f4Fc9",
+            "inputs": {
+                "CONDITION": [
+                    2,
+                    "4oqAlMHV6dgxjQa"
+                ],
+                "SUBSTACK": [
+                    2,
+                    "uMRS1XxDgA7fZTi"
+                ],
+                "SUBSTACK2": [
+                    2,
+                    "kmQj8GIhBB5uKe6"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "4oqAlMHV6dgxjQa": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "hUzLjpBOfntJju9",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "LATMMA5dWhj36C5",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "LATMMA5dWhj36C5": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "4oqAlMHV6dgxjQa",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "base",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "uMRS1XxDgA7fZTi": {
+            "opcode": "control_if_else",
+            "next": null,
+            "parent": "hUzLjpBOfntJju9",
+            "inputs": {
+                "CONDITION": [
+                    2,
+                    "pfOORGN8pixEGDv"
+                ],
+                "SUBSTACK": [
+                    2,
+                    "vTqi0nbkLbdZZJu"
+                ],
+                "SUBSTACK2": [
+                    2,
+                    "jXhVltPpfAh7sp3"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "pfOORGN8pixEGDv": {
+            "opcode": "operator_gt",
+            "next": null,
+            "parent": "uMRS1XxDgA7fZTi",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "5LGeQcofvyWOc2d",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "5LGeQcofvyWOc2d": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "pfOORGN8pixEGDv",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "vTqi0nbkLbdZZJu": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "uMRS1XxDgA7fZTi",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "jXhVltPpfAh7sp3": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "uMRS1XxDgA7fZTi",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        "Infinity"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "kmQj8GIhBB5uKe6": {
+            "opcode": "control_if_else",
+            "next": null,
+            "parent": "hUzLjpBOfntJju9",
+            "inputs": {
+                "CONDITION": [
+                    2,
+                    "cjmxy34vJOw2uWf"
+                ],
+                "SUBSTACK": [
+                    2,
+                    "O7rcMuoUW7u0Sv3"
+                ],
+                "SUBSTACK2": [
+                    2,
+                    "zawIFvkwGc87lSK"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "bvB1UYcXhjLeCc8": {
+            "opcode": "operator_lt",
+            "next": null,
+            "parent": "cjmxy34vJOw2uWf",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "HCcDBsG0LysCUoA",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "HCcDBsG0LysCUoA": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "bvB1UYcXhjLeCc8",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "base",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "cjmxy34vJOw2uWf": {
+            "opcode": "operator_and",
+            "next": null,
+            "parent": "kmQj8GIhBB5uKe6",
+            "inputs": {
+                "OPERAND2": [
+                    2,
+                    "ljei3myeY4VZZFH"
+                ],
+                "OPERAND1": [
+                    2,
+                    "bvB1UYcXhjLeCc8"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "ljei3myeY4VZZFH": {
+            "opcode": "operator_not",
+            "next": null,
+            "parent": "cjmxy34vJOw2uWf",
+            "inputs": {
+                "OPERAND": [
+                    2,
+                    "f94DlIvc0LRt0lk"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "XzmuHwxZWOyrFEx": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "f94DlIvc0LRt0lk",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "f94DlIvc0LRt0lk": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "ljei3myeY4VZZFH",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "XzmuHwxZWOyrFEx",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    3,
+                    "z4DDHK9sBMLoE8U",
+                    [
+                        10,
+                        "50"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "z4DDHK9sBMLoE8U": {
+            "opcode": "operator_round",
+            "next": null,
+            "parent": "f94DlIvc0LRt0lk",
+            "inputs": {
+                "NUM": [
+                    3,
+                    "TyfKyDidxbTstLF",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "TyfKyDidxbTstLF": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "z4DDHK9sBMLoE8U",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "O7rcMuoUW7u0Sv3": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "kmQj8GIhBB5uKe6",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        "NaN"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "jasnvNUsZoxrgha": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "RN4geUmxChJe9SR",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exponent_result",
+                        "Tj{D)1]f2D%fHr(=DR|,"
+                    ],
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "iJgJ3xCHPOvmhqV": {
+            "opcode": "operator_mathop",
+            "next": null,
+            "parent": "zawIFvkwGc87lSK",
+            "inputs": {
+                "NUM": [
+                    3,
+                    "7xEDNbY4HEGCcom",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {
+                "OPERATOR": [
+                    "e ^",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "atdEAjyLzofoABs": {
+            "opcode": "operator_mathop",
+            "next": null,
+            "parent": "7xEDNbY4HEGCcom",
+            "inputs": {
+                "NUM": [
+                    3,
+                    "nfio5mWPzOg7NPC",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {
+                "OPERATOR": [
+                    "ln",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "nfio5mWPzOg7NPC": {
+            "opcode": "operator_mathop",
+            "next": null,
+            "parent": "atdEAjyLzofoABs",
+            "inputs": {
+                "NUM": [
+                    3,
+                    "dPO0S7vEUVP4scl",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {
+                "OPERATOR": [
+                    "abs",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "7xEDNbY4HEGCcom": {
+            "opcode": "operator_multiply",
+            "next": null,
+            "parent": "iJgJ3xCHPOvmhqV",
+            "inputs": {
+                "NUM1": [
+                    3,
+                    "PNmlKQtHFUOQAEn",
+                    [
+                        4,
+                        ""
+                    ]
+                ],
+                "NUM2": [
+                    3,
+                    "atdEAjyLzofoABs",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "PNmlKQtHFUOQAEn": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "7xEDNbY4HEGCcom",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "dPO0S7vEUVP4scl": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "nfio5mWPzOg7NPC",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "base",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "MBJhaeiGTsNEORS": {
+            "opcode": "control_if",
+            "next": "YBFPaqCe9yUQ5ER",
+            "parent": "zawIFvkwGc87lSK",
+            "inputs": {
+                "SUBSTACK": [
+                    2,
+                    "lZnCX4IDZ48Z4TL"
+                ],
+                "CONDITION": [
+                    2,
+                    "sv9s6Cgf1X2t1Fc"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "zawIFvkwGc87lSK": {
+            "opcode": "data_setvariableto",
+            "next": "MBJhaeiGTsNEORS",
+            "parent": "kmQj8GIhBB5uKe6",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "iJgJ3xCHPOvmhqV",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exponent_result",
+                    "Tj{D)1]f2D%fHr(=DR|,"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "pp3W1S3epkMyR28": {
+            "opcode": "operator_lt",
+            "next": null,
+            "parent": "sv9s6Cgf1X2t1Fc",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "TcnkpYLnc3x0Stk",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "TcnkpYLnc3x0Stk": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "pp3W1S3epkMyR28",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "base",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "wjs5P4uhrPNnDs6": {
+            "opcode": "operator_mod",
+            "next": null,
+            "parent": "tMV6f31XhrxR5La",
+            "inputs": {
+                "NUM1": [
+                    3,
+                    "97wmkonfx4VlBam",
+                    [
+                        4,
+                        ""
+                    ]
+                ],
+                "NUM2": [
+                    1,
+                    [
+                        4,
+                        "2"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "97wmkonfx4VlBam": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "wjs5P4uhrPNnDs6",
+            "inputs": {},
+            "fields": {
+                "VALUE": [
+                    "exponent",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "tMV6f31XhrxR5La": {
+            "opcode": "operator_mathop",
+            "next": null,
+            "parent": "PItYSK0QnApozsK",
+            "inputs": {
+                "NUM": [
+                    3,
+                    "wjs5P4uhrPNnDs6",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {
+                "OPERATOR": [
+                    "abs",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "PItYSK0QnApozsK": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "sv9s6Cgf1X2t1Fc",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    "tMV6f31XhrxR5La",
+                    [
+                        10,
+                        ""
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "1"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "sv9s6Cgf1X2t1Fc": {
+            "opcode": "operator_and",
+            "next": null,
+            "parent": "MBJhaeiGTsNEORS",
+            "inputs": {
+                "OPERAND2": [
+                    2,
+                    "PItYSK0QnApozsK"
+                ],
+                "OPERAND1": [
+                    2,
+                    "pp3W1S3epkMyR28"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "lZnCX4IDZ48Z4TL": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "MBJhaeiGTsNEORS",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "M39U8jlfqISquwg",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exponent_result",
+                    "Tj{D)1]f2D%fHr(=DR|,"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "M39U8jlfqISquwg": {
+            "opcode": "operator_subtract",
+            "next": null,
+            "parent": "lZnCX4IDZ48Z4TL",
+            "inputs": {
+                "NUM1": [
+                    1,
+                    [
+                        4,
+                        "0"
+                    ]
+                ],
+                "NUM2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exponent_result",
+                        "Tj{D)1]f2D%fHr(=DR|,"
+                    ],
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "YBFPaqCe9yUQ5ER": {
+            "opcode": "data_setvariableto",
+            "next": "RN4geUmxChJe9SR",
+            "parent": "MBJhaeiGTsNEORS",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "wdYEfRuNmXH9kIL",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exponent_precision",
+                    "2{+n`f/:(11e1d/XcE:+"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "wdYEfRuNmXH9kIL": {
+            "opcode": "operator_mathop",
+            "next": null,
+            "parent": "YBFPaqCe9yUQ5ER",
+            "inputs": {
+                "NUM": [
+                    1,
+                    [
+                        4,
+                        "5"
+                    ]
+                ]
+            },
+            "fields": {
+                "OPERATOR": [
+                    "10 ^",
+                    null
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "J8SHIpjcHZx4wbR": {
+            "opcode": "operator_round",
+            "next": null,
+            "parent": "bUnOIDwwZy5sRit",
+            "inputs": {
+                "NUM": [
+                    3,
+                    "mBTWRkWOFD2rB3P",
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "bUnOIDwwZy5sRit": {
+            "opcode": "operator_divide",
+            "next": null,
+            "parent": "RN4geUmxChJe9SR",
+            "inputs": {
+                "NUM1": [
+                    3,
+                    "J8SHIpjcHZx4wbR",
+                    [
+                        4,
+                        ""
+                    ]
+                ],
+                "NUM2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exponent_precision",
+                        "2{+n`f/:(11e1d/XcE:+"
+                    ],
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "mBTWRkWOFD2rB3P": {
+            "opcode": "operator_multiply",
+            "next": null,
+            "parent": "J8SHIpjcHZx4wbR",
+            "inputs": {
+                "NUM1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exponent_result",
+                        "Tj{D)1]f2D%fHr(=DR|,"
+                    ],
+                    [
+                        4,
+                        ""
+                    ]
+                ],
+                "NUM2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exponent_precision",
+                        "2{+n`f/:(11e1d/XcE:+"
+                    ],
+                    [
+                        4,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "RN4geUmxChJe9SR": {
+            "opcode": "data_setvariableto",
+            "next": "jasnvNUsZoxrgha",
+            "parent": "YBFPaqCe9yUQ5ER",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "bUnOIDwwZy5sRit",
+                    [
+                        10,
+                        "0"
+                    ]
+                ]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exponent_result",
+                    "Tj{D)1]f2D%fHr(=DR|,"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        }
+    },
+    "vars": {
+        "Tj{D)1]f2D%fHr(=DR|,": [
+            "$TB.tmp.fn_exponent_result",
+            1e-10
+        ],
+        "2{+n`f/:(11e1d/XcE:+": [
+            "$TB.tmp.fn_exponent_precision",
+            1000000000000000
+        ]
+    }
+}

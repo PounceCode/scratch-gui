@@ -20,7 +20,7 @@
 }
 
 .filter-bar {
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;

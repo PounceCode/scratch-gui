@@ -56,7 +56,7 @@ const handleClickAddonSettings = addonId => {
 
 const messages = defineMessages({
     defaultTitle: {
-        defaultMessage: 'Run Scratch projects faster',
+        defaultMessage: 'A mod that compiles to Scratch',
         description: 'Title of homepage',
         id: 'tw.guiDefaultTitle'
     }
@@ -329,11 +329,18 @@ class Interface extends React.Component {
                                 <p>
                                     <FormattedMessage
                                         // eslint-disable-next-line max-len
-                                        defaultMessage="{APP_NAME} is a Scratch mod that compiles projects to JavaScript to make them run really fast. Try it out by inputting a project ID or URL above or choosing a featured project below."
-                                        description="Description of TurboWarp on the homepage"
+                                        defaultMessage="{APP_NAME} is a Scratch mod that compiles lots of new features to Scratch (like custom reporters). Try it out by {link} or by inputting a project ID below."
+                                        description="Description of ThunderBlocks on the homepage"
                                         id="tw.home.description"
                                         values={{
-                                            APP_NAME
+                                            APP_NAME,
+                                            link: (
+                                                <a
+                                                    href="editor.html"
+                                                >
+                                                    {'entering the editor'}
+                                                </a>
+                                            )
                                         }}
                                     />
                                 </p>

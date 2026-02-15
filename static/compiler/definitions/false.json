@@ -1,0 +1,81 @@
+{
+    "blocks": {
+        "5Mtn2ZMfbJ3IUcM": {
+            "opcode": "procedures_definition",
+            "next": "BGkoFbiSFa7vVXU",
+            "parent": null,
+            "inputs": {
+                "custom_block": [
+                    1,
+                    "LsCnvK1P86gb4uH"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 44,
+            "y": 44
+        },
+        "LsCnvK1P86gb4uH": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "5Mtn2ZMfbJ3IUcM",
+            "inputs": {},
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.false",
+                "argumentids": "[]",
+                "argumentnames": "[]",
+                "argumentdefaults": "[]",
+                "warp": "true"
+            }
+        },
+        "BGkoFbiSFa7vVXU": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "5Mtn2ZMfbJ3IUcM",
+            "inputs": {
+                "VALUE": [
+                    3,
+                    "7YlP4vrp1zkZB7C",
+                    [
+                        10,
+                        ""
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "7YlP4vrp1zkZB7C": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "BGkoFbiSFa7vVXU",
+            "inputs": {
+                "OPERAND1": [
+                    1,
+                    [
+                        10,
+                        "1"
+                    ]
+                ],
+                "OPERAND2": [
+                    1,
+                    [
+                        10,
+                        "2"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        }
+    },
+    "vars": {}
+}

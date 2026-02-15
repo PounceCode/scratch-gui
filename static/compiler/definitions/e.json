@@ -1,0 +1,56 @@
+{
+    "blocks": {
+        "A0AF4iAc0RrAhzN": {
+            "opcode": "procedures_definition",
+            "next": "fbC1YHzrlFx9IpP",
+            "parent": null,
+            "inputs": {
+                "custom_block": [
+                    1,
+                    "QH9g98omw5r6avl"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 0,
+            "y": 0
+        },
+        "QH9g98omw5r6avl": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "A0AF4iAc0RrAhzN",
+            "inputs": {},
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.e",
+                "argumentids": "[]",
+                "argumentnames": "[]",
+                "argumentdefaults": "[]",
+                "warp": "true"
+            }
+        },
+        "fbC1YHzrlFx9IpP": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "A0AF4iAc0RrAhzN",
+            "inputs": {
+                "VALUE": [
+                    1,
+                    [
+                        10,
+                        "2.718281828459045"
+                    ]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        }
+    },
+    "vars": {}
+}
