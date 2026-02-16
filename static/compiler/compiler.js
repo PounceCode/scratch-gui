@@ -1,5 +1,5 @@
-function download(filename, text) {
-    const blob = new Blob([text], { type: 'application/json' });
+function download(filename, blob) {
+    // const blob = new Blob([text], { type: 'application/json' });
     const element = document.createElement('a');
     element.href = URL.createObjectURL(blob);
     element.download = filename;
@@ -14,8 +14,10 @@ async function compileToScratch() {
     const toCompile = JSON.parse(vm.toJSON());
     console.log('compiling', toCompile);
     const compiled = await convert(toCompile);
-    console.log('compiled', compiled);
-    download('compiled_project.json', JSON.stringify(compiled));
+    console.log('compiled, saving...', compiled);
+    const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled))
+    download('compiled_project.sb3', project);
+    console.log("saved")
 }
 
 const __dirname = 'compiler';
