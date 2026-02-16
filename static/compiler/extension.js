@@ -131,6 +131,21 @@
                         color3: Colors.Looks.tertiary
                     },
                     {
+                        opcode: "forceSetSize",
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'force set size to [SIZE]%',
+                        color1: Colors.Looks.primary,
+                        color2: Colors.Looks.secondary,
+                        color3: Colors.Looks.tertiary,
+                        arguments: {
+                            SIZE: {
+                                type: Scratch.ArgumentType.NUMBER,
+                                defaultValue: 1000
+                            }
+                        },
+                        hideFromPalette: true
+                    },
+                    {
                         text: 'Sensing',
                         blockType: Scratch.BlockType.LABEL
                     },
@@ -398,6 +413,10 @@
 
         endsWith(args) {
             return Scratch.Cast.toBoolean(Scratch.Cast.toString(args.TEXT).endsWith(Scratch.Cast.toString(args.ENDS)))
+        }
+
+        forceSetSize(args, util) {
+            util.target.setSize(args.SIZE, false)
         }
     }
     Scratch.extensions.register(new MoreBlocks());

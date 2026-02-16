@@ -13,15 +13,21 @@ async function compileToScratch() {
     blockInfo = vm.runtime._blockInfo.find(item => item.id == 'moreblocksextension').blocks;
     const toCompile = JSON.parse(vm.toJSON());
     console.log('compiling', toCompile);
-    const compiled = await convert(toCompile);
-    console.log('compiled, saving...', compiled);
-    const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled))
-    download('compiled_project.sb3', project);
-    console.log("saved")
+    try {
+        const compiled = await convert(toCompile);
+        console.log('compiled, saving...', compiled);
+        const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled))
+        download('compiled_project.sb3', project);
+        console.log("saved")
+    } catch (e) {
+        console.log("compilation error", e)
+        alert("Compilation error, check the browser console for more info")
+    }
 }
 
 const __dirname = 'compiler';
 let blockInfo;
+let shouldHandleCostumeChange = false
 const definitions = {};
 
 async function getDef(block) {
@@ -34,45 +40,36 @@ async function getDef(block) {
     if (!definitions[block]) definitions[block] = data;
 
     const blocks = data.blocks;
-    const vars = data.vars;
+    const vars = data.vars || {};
+    const costumes = data.costumes || [];
     return {
         prototype: Object.entries(blocks).filter(([key, value]) => value.opcode == 'procedures_prototype')[0][1],
         blocksToAdd: blocks,
-        varsToAdd: vars
+        varsToAdd: vars,
+        costumesToAdd: costumes,
     };
 }
 
 async function addDef(receivedData) {
     const { blockName, addedDefs, blocks, blockID, target, returnType } = receivedData;
-    const { prototype, blocksToAdd, varsToAdd } = await getDef(blockName);
+    const { prototype, blocksToAdd, varsToAdd, costumesToAdd } = await getDef(blockName);
     const block = blocks[blockID];
 
-    // 1. Safety Check: Standard blocks don't have mutations.
-    // If it exists, parse IDs. If not, use the current input keys as a fallback.
-    let argumentIds = [];
-    if (block.mutation && block.mutation.argumentids) {
-        argumentIds = JSON.parse(block.mutation.argumentids);
-    } else {
-        // Fallback: If no mutation, just grab whatever inputs exist on the block
-        argumentIds = Object.keys(block.inputs);
-    }
-
-    let oldValues = argumentIds.map(id => block.inputs[id]);
+    let oldValues = Object.values(block.inputs);
     let oldKeys = Object.keys(block.inputs);
 
     const correctInputOrder = Object.keys(blockInfo.find(block => block.info.opcode == blockName).info.arguments);
-    // console.log(JSON.stringify(oldValues), JSON.stringify(oldKeys), JSON.stringify(correctInputOrder))
 
     const reorderedInputs = correctInputOrder.reduce((acc, key) => {
-        // if (block.inputs[key]) {
         acc[key] = block.inputs[key] ?? [];
-        // }
         return acc;
     }, {});
 
     const reorderedKeys = Object.keys(reorderedInputs);
     const reorderedValues = reorderedKeys.map(key => reorderedInputs[key]);
+
     console.log(JSON.stringify(reorderedKeys), JSON.stringify(reorderedValues));
+    
     oldValues = reorderedValues;
     oldKeys = reorderedKeys;
 
@@ -107,8 +104,8 @@ async function addDef(receivedData) {
         children: [],
         proccode: prototype.mutation.proccode,
         argumentids: prototype.mutation.argumentids || '[]',
-        argumentnames: prototype.mutation.argumentnames || '[]',
-        argumentdefaults: prototype.mutation.argumentdefaults || '[]',
+        // argumentnames: prototype.mutation.argumentnames || '[]',
+        // argumentdefaults: prototype.mutation.argumentdefaults || '[]',
         warp: prototype.mutation.warp || 'false',
         return: returnType
     };
@@ -146,6 +143,19 @@ async function addDef(receivedData) {
         Object.keys(varsToAdd).forEach(id => {
             target.variables[id] = varsToAdd[id];
         });
+
+        outer: for (const costume of costumesToAdd) {
+            for (const test of target.costumes) {
+                if (costume.name === test.name) {
+                    console.log("skipping adding", costume.name)
+                    continue outer
+                }
+            }
+            console.log("adding", costume.name)
+            target.costumes.push(costume)
+
+            shouldHandleCostumeChange = true
+        }
         addedDefs.push(blockName);
     }
 }
@@ -170,7 +180,6 @@ async function convert(project) {
         const addedDefs = [];
         const moreBlockStart = 'moreblocksextension_';
         for (const id of Object.keys(blocks)) {
-            // k.forEach(async (id) => {
             const block = blocks[id];
             if (block.opcode.startsWith(moreBlockStart)) {
                 const bName = block.opcode.split('_')[1];
@@ -198,9 +207,28 @@ async function convert(project) {
                     case "substring": await handleBlock("substring", 1, data); break
                     case "startsWith": await handleBlock("startsWith", 2, data); break
                     case "endsWith": await handleBlock("endsWith", 2, data); break
+                    // case "forceSetSize": await handleBlock("forceSetSize", null, data); break
                 }
             }
         }
+
+        // if (shouldHandleCostumeChange) {
+        //     for (const id of Object.keys(blocks)) {
+        //         const block = blocks[id];
+        //         const bName = block.opcode
+        //         const data = {
+        //             blockName: null,
+        //             addedDefs: addedDefs,
+        //             blocks: blocks,
+        //             blockID: id,
+        //             target: target
+        //         };
+        //         switch (bName) {
+        //             case "looks_nextcostume": await handleBlock("_nextCostume", null, data); break
+        //             case "looks_switchcostumeto": await handleBlock("_switchCostume", null, data); break
+        //         }
+        //     }
+        // }
 
         const notStackBlocks = [];
 

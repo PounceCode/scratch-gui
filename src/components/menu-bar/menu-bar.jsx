@@ -447,7 +447,7 @@ class MenuBar extends React.Component {
         // Set state to loading
         this.setState({ isCompiling: true }, async () => {
             try {
-                await new Promise(resolve => setTimeout(resolve, randomIntFromInterval(300, 600)));
+                await new Promise(resolve => setTimeout(resolve, randomIntFromInterval(200, 250)));
                 // Execute the compilation
                 await compileToScratch();
             } catch (e) {

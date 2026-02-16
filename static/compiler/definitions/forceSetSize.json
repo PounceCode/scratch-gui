@@ -1,0 +1,297 @@
+{
+    "vars": {
+        "=,?l;DHOQROzulYCfA)h": ["$TB.tmp.fn_forceSetSize_prevCostume", 1]
+    },
+    "blocks": {
+        "f8rVbQp9ATFfe4H": {
+            "opcode": "procedures_definition",
+            "next": "VOLlePOYznekJH7",
+            "parent": null,
+            "inputs": {
+                "custom_block": [1, "eQGYERGoyJIBHQi"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 271,
+            "y": 377
+        },
+        "eQGYERGoyJIBHQi": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "f8rVbQp9ATFfe4H",
+            "inputs": {
+                "+)Q4G6maY-om7q*ly(ul": [1, "iggRU9Pk9uV1Cdi"]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.forceSetSize %s",
+                "argumentids": "[\"+)Q4G6maY-om7q*ly(ul\"]",
+                "argumentnames": "[\"size\"]",
+                "argumentdefaults": "[\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "iggRU9Pk9uV1Cdi": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "eQGYERGoyJIBHQi",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["size", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "VOLlePOYznekJH7": {
+            "opcode": "data_setvariableto",
+            "next": "hI1ohipzbaHYuoG",
+            "parent": "f8rVbQp9ATFfe4H",
+            "inputs": {
+                "VALUE": [3, "UUQFw9nx4JXHtAV", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_forceSetSize_prevCostume",
+                    "=,?l;DHOQROzulYCfA)h"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "UUQFw9nx4JXHtAV": {
+            "opcode": "looks_costumenumbername",
+            "next": null,
+            "parent": "VOLlePOYznekJH7",
+            "inputs": {},
+            "fields": {
+                "NUMBER_NAME": ["number", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "hI1ohipzbaHYuoG": {
+            "opcode": "control_if_else",
+            "next": "PjzLssUyFdeEqza",
+            "parent": "VOLlePOYznekJH7",
+            "inputs": {
+                "CONDITION": [2, "fzmZGJdszKhnlys"],
+                "SUBSTACK": [2, "RaxGczxkbegr4fM"],
+                "SUBSTACK2": [2, "qRsj9GEv2EsKlLI"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "fzmZGJdszKhnlys": {
+            "opcode": "operator_lt",
+            "next": null,
+            "parent": "hI1ohipzbaHYuoG",
+            "inputs": {
+                "OPERAND1": [3, "LEYMtWYHRwNspaw", [10, ""]],
+                "OPERAND2": [1, [10, "10"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "LEYMtWYHRwNspaw": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "fzmZGJdszKhnlys",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["size", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "RaxGczxkbegr4fM": {
+            "opcode": "looks_switchcostumeto",
+            "next": null,
+            "parent": "hI1ohipzbaHYuoG",
+            "inputs": {
+                "COSTUME": [1, "HWLeTgP6Yw6KJW8"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "HWLeTgP6Yw6KJW8": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "RaxGczxkbegr4fM",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.size.enormous", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "qRsj9GEv2EsKlLI": {
+            "opcode": "control_if_else",
+            "next": null,
+            "parent": "hI1ohipzbaHYuoG",
+            "inputs": {
+                "CONDITION": [2, "M9hMzCBy76iFbAU"],
+                "SUBSTACK": [2, "yNH27XhRO6214zs"],
+                "SUBSTACK2": [2, "k1VH7I13zzHnu6a"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "M9hMzCBy76iFbAU": {
+            "opcode": "operator_lt",
+            "next": null,
+            "parent": "qRsj9GEv2EsKlLI",
+            "inputs": {
+                "OPERAND1": [3, "UBLUDr3AFgWKUU9", [10, ""]],
+                "OPERAND2": [1, [10, "100"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "UBLUDr3AFgWKUU9": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "M9hMzCBy76iFbAU",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["size", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "yNH27XhRO6214zs": {
+            "opcode": "looks_switchcostumeto",
+            "next": null,
+            "parent": "qRsj9GEv2EsKlLI",
+            "inputs": {
+                "COSTUME": [1, "f4M2BrWI6VUAeto"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "f4M2BrWI6VUAeto": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "yNH27XhRO6214zs",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.size.big", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "k1VH7I13zzHnu6a": {
+            "opcode": "looks_switchcostumeto",
+            "next": null,
+            "parent": "qRsj9GEv2EsKlLI",
+            "inputs": {
+                "COSTUME": [1, "6wb7DQNjqyYjsrY"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "6wb7DQNjqyYjsrY": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "k1VH7I13zzHnu6a",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.size.nothing", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "PjzLssUyFdeEqza": {
+            "opcode": "looks_setsizeto",
+            "next": "n2WSicwiBzSoje4",
+            "parent": "hI1ohipzbaHYuoG",
+            "inputs": {
+                "SIZE": [3, "sG3bthgp691SFEx", [4, "100"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "sG3bthgp691SFEx": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "PjzLssUyFdeEqza",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["size", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "n2WSicwiBzSoje4": {
+            "opcode": "looks_switchcostumeto",
+            "next": null,
+            "parent": "PjzLssUyFdeEqza",
+            "inputs": {
+                "COSTUME": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_forceSetSize_prevCostume",
+                        "=,?l;DHOQROzulYCfA)h"
+                    ],
+                    "u"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "rx1CJCsBKfJkxkS": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "n2WSicwiBzSoje4",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.size.enormous", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        }
+    },
+    "costumes": [
+        {
+            "name": "$TB.size.nothing",
+            "bitmapResolution": 1,
+            "dataFormat": "svg",
+            "assetId": "14e46ec3e2ba471c2adfe8f119052307",
+            "md5ext": "14e46ec3e2ba471c2adfe8f119052307.svg",
+            "rotationCenterX": 0,
+            "rotationCenterY": 0
+        },
+        {
+            "name": "$TB.size.big",
+            "bitmapResolution": 1,
+            "dataFormat": "svg",
+            "assetId": "50092d849c8762e88110369b92b2efb9",
+            "md5ext": "50092d849c8762e88110369b92b2efb9.svg",
+            "rotationCenterX": 292.4025246560036,
+            "rotationCenterY": 216.77130566846142
+        },
+        {
+            "name": "$TB.size.enormous",
+            "bitmapResolution": 1,
+            "dataFormat": "svg",
+            "assetId": "ee4a895a2324532ba04b8af7e3598f65",
+            "md5ext": "ee4a895a2324532ba04b8af7e3598f65.svg",
+            "rotationCenterX": 3869.377339999999,
+            "rotationCenterY": 2652.490760000001
+        }
+    ]
+}
