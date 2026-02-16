@@ -1,6 +1,16 @@
-scratch-gui modified for use in [TurboWarp](https://turbowarp.org/)
+[ThunderBlocks](https://thunderblocks.quuq.dev/) is a powerful Scratch mod that compiles to Scratch. It has many new features, including:
+
+* Making custom blocks that are custom reporters
+* Many new blocks, including an exponent block
+
+Everything then gets compiled into Scratch-compatible code. Every new block in ThunderBlocks should also work in Scratch. This allows for the creation of many complex projects easily.
+
+
+To see a full list of everything added, check out the "More Blocks" extension.
 
 ## Setup
+
+The steps for setting up ThunderBlocks are the same as Tsetting up TurboWarp (as this is a fork of TurboWarp).
 
 See https://docs.turbowarp.org/development/getting-started to setup the complete TurboWarp environment.
 

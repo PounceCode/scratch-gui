@@ -1,7 +1,8 @@
 window.showWelcome = function () {
     const popupTitle = "Welcome to ThunderBlocks"
-    const msg = "ThunderBlocks is a powerful TurboWarp mod that compiles to Scratch. It has many new features, including:<ul><li>Making custom blocks that are custom reporters</li><li>Many new blocks, including an exponent block</li></ul>Everything then gets compiled into Scratch-compatible code. Every new block in ThunderBlocks should also work in Scratch. This allows for the creation of many complex projects easily.<br><br>To start, check out the \"More Blocks\" extension.<button style='display: block;margin: 0 auto;color: white;padding: 10px 20px;background-color: darkblue;border-radius: 5px;border: none;' onclick='document.querySelector(`#tw-custom-popup-overlay`).remove()'>Go</button>"
+    const msg = "ThunderBlocks is a powerful Scratch mod that compiles to Scratch. It has many new features, including:<ul><li>Making custom blocks that are custom reporters</li><li>Many new blocks, including an exponent block</li></ul>Everything then gets compiled into Scratch-compatible code. Every new block in ThunderBlocks should also work in Scratch. This allows for the creation of many complex projects easily.<br><br>To see a full list of everything added, check out the \"More Blocks\" extension.<button style='display: block;margin: 0 auto;color: white;padding: 10px 20px;background-color: darkblue;border-radius: 5px;border: none;' onclick='document.querySelector(`#tw-custom-popup-overlay`).remove()'>Go</button>"
     
+    localStorage.setItem("firstTime", "false")
     // 1. Remove any existing popup to prevent duplicates
     const existing = document.getElementById('tw-custom-popup-overlay');
     if (existing) existing.remove();

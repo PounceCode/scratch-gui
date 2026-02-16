@@ -139,7 +139,6 @@ class Blocks extends React.Component {
         const isFirstTime = JSON.parse(localStorage.getItem("firstTime") || "true")
         if (isFirstTime) {
             window.showWelcome();
-            localStorage.setItem("firstTime", "false")
         }
 
         this.ScratchBlocks = VMScratchBlocks(this.props.vm, this.props.useCatBlocks);
