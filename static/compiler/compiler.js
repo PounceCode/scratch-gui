@@ -15,8 +15,12 @@ async function compileToScratch() {
     console.log('compiling', toCompile);
     try {
         const compiled = await convert(toCompile);
+        console.log("costumes", extraCostumesToBeAdded)
+        // for (const asset of extraCostumesToBeAdded) {
+        //     vm.addCostume(asset.data.md5ext, await asset.content.blob())
+        // }
         console.log('compiled, saving...', compiled);
-        const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled))
+        const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled), extraCostumesToBeAdded.map(c => ({fileName: c.data.md5ext, fileContent: c.content})))
         download('compiled_project.sb3', project);
         console.log("saved")
     } catch (e) {
@@ -27,7 +31,8 @@ async function compileToScratch() {
 
 const __dirname = 'compiler';
 let blockInfo;
-let shouldHandleCostumeChange = false
+let extraCostumes = false;
+let extraCostumesToBeAdded = [];
 const definitions = {};
 
 async function getDef(block) {
@@ -162,7 +167,10 @@ async function addDef(receivedData) {
             console.log("adding", costume.name)
             target.costumes.push(costume)
 
-            shouldHandleCostumeChange = true
+            extraCostumes = true
+            if (!extraCostumesToBeAdded.map(a => a.data.md5ext).includes(costume.md5ext)) {
+                extraCostumesToBeAdded.push({data: costume, content: new Uint8Array(await (await fetch(`https://assets.scratch.mit.edu/internalapi/asset/${costume.md5ext}/get`)).arrayBuffer())})
+            }
         }
         addedDefs.push(blockName);
     }
@@ -183,6 +191,7 @@ async function convert(project) {
 
     for (const target of json.targets) {
         const blocks = target.blocks;
+        extraCostumes = false
 
         // replace custom definitions (eg: exponent block)
         const addedDefs = [];
@@ -223,7 +232,7 @@ async function convert(project) {
             }
         }
 
-        if (shouldHandleCostumeChange) {
+        if (extraCostumes.length > 0) {
             for (const id of originalBlocks) {
                 const block = blocks[id];
                 const bName = block.opcode

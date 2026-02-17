@@ -1,8 +1,7 @@
 window.showWelcome = function () {
     const popupTitle = "Welcome to ThunderBlocks"
-    const msg = "ThunderBlocks is a powerful Scratch mod that compiles to Scratch. It has many new features, including:<ul><li>Making custom blocks that are custom reporters</li><li>Many new blocks, including an exponent block</li></ul>Everything then gets compiled into Scratch-compatible code. Every new block in ThunderBlocks should also work in Scratch. This allows for the creation of many complex projects easily.<br><br>To see a full list of everything added, check out the \"More Blocks\" extension.<button style='display: block;margin: 0 auto;color: white;padding: 10px 20px;background-color: darkblue;border-radius: 5px;border: none;' onclick='document.querySelector(`#tw-custom-popup-overlay`).remove()'>Go</button>"
+    const msg = "ThunderBlocks is a powerful Scratch mod that compiles to Scratch. It has many new features, including:<ul><li>Making custom blocks that are custom reporters</li><li>Many new blocks, including an exponent block</li></ul>Everything then gets compiled into Scratch-compatible code. Every new block in ThunderBlocks should also work in Scratch. This allows for the creation of many complex projects easily.<br><br>To see a full list of everything added, check out the \"More Blocks\" extension.<button style='display: block;margin: 0 auto;color: white;padding: 10px 20px;background-color: darkblue;border-radius: 5px;border: none;' onclick='document.querySelector(`#tw-custom-popup-overlay`).remove();    localStorage.setItem(\"firstTime\", \"false\")'>Go</button>"
     
-    localStorage.setItem("firstTime", "false")
     // 1. Remove any existing popup to prevent duplicates
     const existing = document.getElementById('tw-custom-popup-overlay');
     if (existing) existing.remove();
@@ -44,29 +43,29 @@ window.showWelcome = function () {
     message.style.lineHeight = '1.5';
     message.style.marginTop = '20px'
 
-    // 6. Create the Close (X) Button
-    const closeBtn = document.createElement('button');
-    closeBtn.innerText = '×'; // Special character for X
-    closeBtn.style.position = 'absolute';
-    closeBtn.style.top = '10px';
-    closeBtn.style.right = '10px';
-    closeBtn.style.background = 'none';
-    closeBtn.style.border = 'none';
-    closeBtn.style.fontSize = '24px';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.color = '#999';
+    // // 6. Create the Close (X) Button
+    // const closeBtn = document.createElement('button');
+    // closeBtn.innerText = '×'; // Special character for X
+    // closeBtn.style.position = 'absolute';
+    // closeBtn.style.top = '10px';
+    // closeBtn.style.right = '10px';
+    // closeBtn.style.background = 'none';
+    // closeBtn.style.border = 'none';
+    // closeBtn.style.fontSize = '24px';
+    // closeBtn.style.cursor = 'pointer';
+    // closeBtn.style.color = '#999';
 
-    // Add hover effect logic for the button (optional)
-    closeBtn.onmouseenter = () => closeBtn.style.color = 'red';
-    closeBtn.onmouseleave = () => closeBtn.style.color = '#999';
+    // // Add hover effect logic for the button (optional)
+    // closeBtn.onmouseenter = () => closeBtn.style.color = 'red';
+    // closeBtn.onmouseleave = () => closeBtn.style.color = '#999';
 
-    // 7. Define what happens when X is clicked
-    closeBtn.onclick = function () {
-        overlay.remove();
-    };
+    // // 7. Define what happens when X is clicked
+    // closeBtn.onclick = function () {
+    //     overlay.remove();
+    // };
 
-    // 8. Assemble the pieces
-    box.appendChild(closeBtn);
+    // // 8. Assemble the pieces
+    // box.appendChild(closeBtn);
     box.appendChild(title);
     box.appendChild(message);
     overlay.appendChild(box);
