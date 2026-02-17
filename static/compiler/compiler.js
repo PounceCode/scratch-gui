@@ -183,6 +183,9 @@ async function handleBlock(name, returnType, data) {
 }
 
 async function convert(project) {
+    extraCostumes = false;
+    extraCostumesToBeAdded = [];
+
     const json = JSON.parse(JSON.stringify(project));
     const generateId = (prefix = 'VAR') => `${prefix}_${Math.random().toString(36).substring(2, 11)}`;
 
