@@ -55,10 +55,18 @@ async function addDef(receivedData) {
     const { prototype, blocksToAdd, varsToAdd, costumesToAdd } = await getDef(blockName);
     const block = blocks[blockID];
 
+    if (blockName == "_switchCostume") {
+        console.log(block)
+        block.inputs.COSTUME = [1, [10, blocks[block.inputs.COSTUME[1]].fields.COSTUME[0]]]
+        delete blocks[block.inputs.COSTUME[1]]
+    }
+
     let oldValues = Object.values(block.inputs);
     let oldKeys = Object.keys(block.inputs);
 
-    const correctInputOrder = Object.keys(blockInfo.find(block => block.info.opcode == blockName).info.arguments);
+    const correctInputOrder = Object.keys(blockInfo.find(block => block.info.opcode == blockName)?.info.arguments ?? block.inputs);
+
+    console.log(correctInputOrder)
 
     const reorderedInputs = correctInputOrder.reduce((acc, key) => {
         acc[key] = block.inputs[key] ?? [];
@@ -179,6 +187,7 @@ async function convert(project) {
         // replace custom definitions (eg: exponent block)
         const addedDefs = [];
         const moreBlockStart = 'moreblocksextension_';
+        const originalBlocks = Object.keys(blocks)
         for (const id of Object.keys(blocks)) {
             const block = blocks[id];
             if (block.opcode.startsWith(moreBlockStart)) {
@@ -207,28 +216,28 @@ async function convert(project) {
                     case "substring": await handleBlock("substring", 1, data); break
                     case "startsWith": await handleBlock("startsWith", 2, data); break
                     case "endsWith": await handleBlock("endsWith", 2, data); break
-                    // case "forceSetSize": await handleBlock("forceSetSize", null, data); break
+                    case "forceSetSize": await handleBlock("forceSetSize", null, data); break
                 }
             }
         }
 
-        // if (shouldHandleCostumeChange) {
-        //     for (const id of Object.keys(blocks)) {
-        //         const block = blocks[id];
-        //         const bName = block.opcode
-        //         const data = {
-        //             blockName: null,
-        //             addedDefs: addedDefs,
-        //             blocks: blocks,
-        //             blockID: id,
-        //             target: target
-        //         };
-        //         switch (bName) {
-        //             case "looks_nextcostume": await handleBlock("_nextCostume", null, data); break
-        //             case "looks_switchcostumeto": await handleBlock("_switchCostume", null, data); break
-        //         }
-        //     }
-        // }
+        if (shouldHandleCostumeChange) {
+            for (const id of originalBlocks) {
+                const block = blocks[id];
+                const bName = block.opcode
+                const data = {
+                    blockName: null,
+                    addedDefs: addedDefs,
+                    blocks: blocks,
+                    blockID: id,
+                    target: target
+                };
+                switch (bName) {
+                    case "looks_nextcostume": await handleBlock("_nextCostume", null, data); break
+                    case "looks_switchcostumeto": await handleBlock("_switchCostume", null, data); break
+                }
+            }
+        }
 
         const notStackBlocks = [];
 

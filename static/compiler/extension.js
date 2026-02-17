@@ -142,8 +142,7 @@
                                 type: Scratch.ArgumentType.NUMBER,
                                 defaultValue: 1000
                             }
-                        },
-                        hideFromPalette: true
+                        }
                     },
                     {
                         text: 'Sensing',
