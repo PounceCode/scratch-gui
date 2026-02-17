@@ -1,0 +1,1057 @@
+{
+    "blocks": {
+        "xt9JJelH8NclHO3": {
+            "opcode": "procedures_definition",
+            "next": "dqdocfsVZPNr9Oc",
+            "parent": null,
+            "inputs": {
+                "custom_block": [1, "wEqLNJymPoUr2wt"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 44,
+            "y": 10
+        },
+        "wEqLNJymPoUr2wt": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "xt9JJelH8NclHO3",
+            "inputs": {
+                "6|,;]HcBE4kQkdRdg$%9": [1, "bfiBNPVTUfWbE7b"],
+                "h==avM)Cr3]75#g6^sH~": [1, "RWin40Zn8A4Yza2"]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.exactEquals %s %s",
+                "argumentids": "[\"6|,;]HcBE4kQkdRdg$%9\",\"h==avM)Cr3]75#g6^sH~\"]",
+                "argumentnames": "[\"value1\",\"value2\"]",
+                "argumentdefaults": "[\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "bfiBNPVTUfWbE7b": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "wEqLNJymPoUr2wt",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value1", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "RWin40Zn8A4Yza2": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "wEqLNJymPoUr2wt",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value2", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "JRFkCYruQh2d3FC": {
+            "opcode": "data_setvariableto",
+            "next": "w4jLqd03J6DiZJX",
+            "parent": "OeLYTHuugx0YNlj",
+            "inputs": {
+                "VALUE": [1, [10, ""]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_case1",
+                    "ro:U.rH.Iwe=DfaxVoOt"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "w4jLqd03J6DiZJX": {
+            "opcode": "data_setvariableto",
+            "next": "U0xhh75VN2nEtyK",
+            "parent": "JRFkCYruQh2d3FC",
+            "inputs": {
+                "VALUE": [1, [10, ""]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_case2",
+                    ".t8F9J_3;17pNm=57u8f"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "U0xhh75VN2nEtyK": {
+            "opcode": "data_setvariableto",
+            "next": "8TY0SoNI1eJmPCs",
+            "parent": "w4jLqd03J6DiZJX",
+            "inputs": {
+                "VALUE": [1, [10, "1"]]
+            },
+            "fields": {
+                "VARIABLE": ["$TB.tmp.fn_exactEquals_i", "jd$|N46RDx9/ZMn:zyS["]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "8TY0SoNI1eJmPCs": {
+            "opcode": "control_repeat",
+            "next": "I1or17WdrrgapuB",
+            "parent": "U0xhh75VN2nEtyK",
+            "inputs": {
+                "TIMES": [3, "C9bg42oYrZnycmH", [6, "10"]],
+                "SUBSTACK": [2, "0dzVklHqHvL7cZ5"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "C9bg42oYrZnycmH": {
+            "opcode": "operator_length",
+            "next": null,
+            "parent": "8TY0SoNI1eJmPCs",
+            "inputs": {
+                "STRING": [3, "WshWDHgTiYQglF5", [10, "apple"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "WshWDHgTiYQglF5": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "C9bg42oYrZnycmH",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value1", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "q2o9CQLTzDib60x": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "Xm5WmhnHXslbvWh",
+            "inputs": {
+                "VALUE": [3, "ANbtnsH8IAKb2sF", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_case1",
+                    "ro:U.rH.Iwe=DfaxVoOt"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "ANbtnsH8IAKb2sF": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "q2o9CQLTzDib60x",
+            "inputs": {
+                "STRING1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_case1",
+                        "ro:U.rH.Iwe=DfaxVoOt"
+                    ],
+                    [10, "apple "]
+                ],
+                "STRING2": [1, [10, "u"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "za5pj9EcKTWEbwB": {
+            "opcode": "looks_switchcostumeto",
+            "next": "Xm5WmhnHXslbvWh",
+            "parent": "0dzVklHqHvL7cZ5",
+            "inputs": {
+                "COSTUME": [3, "rYiMtpisKA1RBKI", "L"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "y1hO7plAPbEGUY8": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": null,
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.Z", null]
+            },
+            "shadow": true,
+            "topLevel": true,
+            "x": 203,
+            "y": 282
+        },
+        "rYiMtpisKA1RBKI": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "za5pj9EcKTWEbwB",
+            "inputs": {
+                "STRING1": [1, [10, "$TB."]],
+                "STRING2": [3, "dHsOXpXVGj9gjHK", [10, "banana"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "dHsOXpXVGj9gjHK": {
+            "opcode": "operator_letter_of",
+            "next": null,
+            "parent": "rYiMtpisKA1RBKI",
+            "inputs": {
+                "LETTER": [
+                    3,
+                    [12, "$TB.tmp.fn_exactEquals_i", "jd$|N46RDx9/ZMn:zyS["],
+                    [6, "1"]
+                ],
+                "STRING": [3, "EwLriEkih5lqAbN", [10, "apple"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "EwLriEkih5lqAbN": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "dHsOXpXVGj9gjHK",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value1", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "0dzVklHqHvL7cZ5": {
+            "opcode": "looks_switchcostumeto",
+            "next": "za5pj9EcKTWEbwB",
+            "parent": "8TY0SoNI1eJmPCs",
+            "inputs": {
+                "COSTUME": [1, "mVGVYvyNylhaakH"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "mVGVYvyNylhaakH": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "0dzVklHqHvL7cZ5",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.null", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "Xm5WmhnHXslbvWh": {
+            "opcode": "control_if_else",
+            "next": "5cJNd4gZvnsn7Rc",
+            "parent": "za5pj9EcKTWEbwB",
+            "inputs": {
+                "SUBSTACK": [2, "q2o9CQLTzDib60x"],
+                "CONDITION": [2, "Gx8HhrjENQ2zlQW"],
+                "SUBSTACK2": [2, "reiecQaQmB8EnWS"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "Gx8HhrjENQ2zlQW": {
+            "opcode": "operator_gt",
+            "next": null,
+            "parent": "Xm5WmhnHXslbvWh",
+            "inputs": {
+                "OPERAND1": [3, "WdZjQGBpPmwnIYF", [10, ""]],
+                "OPERAND2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_costumeStart",
+                        "NW%.R-i^23HXa7GN-jf?"
+                    ],
+                    [10, "1"]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "WdZjQGBpPmwnIYF": {
+            "opcode": "looks_costumenumbername",
+            "next": null,
+            "parent": "Gx8HhrjENQ2zlQW",
+            "inputs": {},
+            "fields": {
+                "NUMBER_NAME": ["number", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "reiecQaQmB8EnWS": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "Xm5WmhnHXslbvWh",
+            "inputs": {
+                "VALUE": [3, "BEFWN43vA8x1pBE", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_case1",
+                    "ro:U.rH.Iwe=DfaxVoOt"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "BEFWN43vA8x1pBE": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "reiecQaQmB8EnWS",
+            "inputs": {
+                "STRING1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_case1",
+                        "ro:U.rH.Iwe=DfaxVoOt"
+                    ],
+                    [10, "apple "]
+                ],
+                "STRING2": [1, [10, "l"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "5cJNd4gZvnsn7Rc": {
+            "opcode": "data_changevariableby",
+            "next": null,
+            "parent": "Xm5WmhnHXslbvWh",
+            "inputs": {
+                "VALUE": [1, [4, "1"]]
+            },
+            "fields": {
+                "VARIABLE": ["$TB.tmp.fn_exactEquals_i", "jd$|N46RDx9/ZMn:zyS["]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "I1or17WdrrgapuB": {
+            "opcode": "data_setvariableto",
+            "next": "g4mFMSsyRDGUelG",
+            "parent": "8TY0SoNI1eJmPCs",
+            "inputs": {
+                "VALUE": [1, [10, "1"]]
+            },
+            "fields": {
+                "VARIABLE": ["$TB.tmp.fn_exactEquals_i", "jd$|N46RDx9/ZMn:zyS["]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "g4mFMSsyRDGUelG": {
+            "opcode": "control_repeat",
+            "next": "Lr49ygTFsuh0TQg",
+            "parent": "I1or17WdrrgapuB",
+            "inputs": {
+                "TIMES": [3, "5ln5gqI56AG2smG", [6, "10"]],
+                "SUBSTACK": [2, "t5WvjrjD8su1hGs"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "5ln5gqI56AG2smG": {
+            "opcode": "operator_length",
+            "next": null,
+            "parent": "g4mFMSsyRDGUelG",
+            "inputs": {
+                "STRING": [3, "PukqO1UX6nwjFvx", [10, "apple"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "PukqO1UX6nwjFvx": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "5ln5gqI56AG2smG",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value2", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "t5WvjrjD8su1hGs": {
+            "opcode": "looks_switchcostumeto",
+            "next": "gv1282VFi6olEEd",
+            "parent": "g4mFMSsyRDGUelG",
+            "inputs": {
+                "COSTUME": [1, "yWJvSeh1jvsMGyT"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "yWJvSeh1jvsMGyT": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "t5WvjrjD8su1hGs",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.null", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "gv1282VFi6olEEd": {
+            "opcode": "looks_switchcostumeto",
+            "next": "uQmK051rQqgN7ND",
+            "parent": "t5WvjrjD8su1hGs",
+            "inputs": {
+                "COSTUME": [3, "N7ga9wQAp54rEsa", "T"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "N7ga9wQAp54rEsa": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "gv1282VFi6olEEd",
+            "inputs": {
+                "STRING1": [1, [10, "$TB."]],
+                "STRING2": [3, "AQch7Nlt7s2wWqB", [10, "banana"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "AQch7Nlt7s2wWqB": {
+            "opcode": "operator_letter_of",
+            "next": null,
+            "parent": "N7ga9wQAp54rEsa",
+            "inputs": {
+                "LETTER": [
+                    3,
+                    [12, "$TB.tmp.fn_exactEquals_i", "jd$|N46RDx9/ZMn:zyS["],
+                    [6, "1"]
+                ],
+                "STRING": [3, "oo966r92AgNgSqJ", [10, "apple"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "oo966r92AgNgSqJ": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "AQch7Nlt7s2wWqB",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value2", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "X9azsutu4fDLOHL": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "gv1282VFi6olEEd",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.Z", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "uQmK051rQqgN7ND": {
+            "opcode": "control_if_else",
+            "next": "5vqkQ9QJ4eW7XAZ",
+            "parent": "gv1282VFi6olEEd",
+            "inputs": {
+                "CONDITION": [2, "6xtWlovW7Xu4Nyh"],
+                "SUBSTACK": [2, "nbEralgxK1Jucp3"],
+                "SUBSTACK2": [2, "l75akiWlOoYs4Ak"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "6xtWlovW7Xu4Nyh": {
+            "opcode": "operator_gt",
+            "next": null,
+            "parent": "uQmK051rQqgN7ND",
+            "inputs": {
+                "OPERAND1": [3, "O9oA91dk9Z36RSM", [10, ""]],
+                "OPERAND2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_costumeStart",
+                        "NW%.R-i^23HXa7GN-jf?"
+                    ],
+                    [10, "1"]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "O9oA91dk9Z36RSM": {
+            "opcode": "looks_costumenumbername",
+            "next": null,
+            "parent": "6xtWlovW7Xu4Nyh",
+            "inputs": {},
+            "fields": {
+                "NUMBER_NAME": ["number", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "nbEralgxK1Jucp3": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "uQmK051rQqgN7ND",
+            "inputs": {
+                "VALUE": [3, "0MEWN2zxNpzbR8R", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_case2",
+                    ".t8F9J_3;17pNm=57u8f"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "0MEWN2zxNpzbR8R": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "nbEralgxK1Jucp3",
+            "inputs": {
+                "STRING1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_case2",
+                        ".t8F9J_3;17pNm=57u8f"
+                    ],
+                    [10, "apple "]
+                ],
+                "STRING2": [1, [10, "u"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "l75akiWlOoYs4Ak": {
+            "opcode": "data_setvariableto",
+            "next": null,
+            "parent": "uQmK051rQqgN7ND",
+            "inputs": {
+                "VALUE": [3, "F21KmVVzyTQD1J1", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_case2",
+                    ".t8F9J_3;17pNm=57u8f"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "F21KmVVzyTQD1J1": {
+            "opcode": "operator_join",
+            "next": null,
+            "parent": "l75akiWlOoYs4Ak",
+            "inputs": {
+                "STRING1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_case2",
+                        ".t8F9J_3;17pNm=57u8f"
+                    ],
+                    [10, "apple "]
+                ],
+                "STRING2": [1, [10, "l"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "5vqkQ9QJ4eW7XAZ": {
+            "opcode": "data_changevariableby",
+            "next": null,
+            "parent": "uQmK051rQqgN7ND",
+            "inputs": {
+                "VALUE": [1, [4, "1"]]
+            },
+            "fields": {
+                "VARIABLE": ["$TB.tmp.fn_exactEquals_i", "jd$|N46RDx9/ZMn:zyS["]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "OeLYTHuugx0YNlj": {
+            "opcode": "data_setvariableto",
+            "next": "JRFkCYruQh2d3FC",
+            "parent": "Nx5BQxOKygRrzS3",
+            "inputs": {
+                "VALUE": [3, "baudtFLgmeDuAfZ", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_costumeStart",
+                    "NW%.R-i^23HXa7GN-jf?"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "dqdocfsVZPNr9Oc": {
+            "opcode": "data_setvariableto",
+            "next": "Nx5BQxOKygRrzS3",
+            "parent": "xt9JJelH8NclHO3",
+            "inputs": {
+                "VALUE": [3, "7HVpvQ4NpXTUj0Z", [10, "0"]]
+            },
+            "fields": {
+                "VARIABLE": [
+                    "$TB.tmp.fn_exactEquals_oldCostume",
+                    "K/?4!0K?gwnaZ?9#?wxC"
+                ]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "7HVpvQ4NpXTUj0Z": {
+            "opcode": "looks_costumenumbername",
+            "next": null,
+            "parent": "dqdocfsVZPNr9Oc",
+            "inputs": {},
+            "fields": {
+                "NUMBER_NAME": ["number", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "Nx5BQxOKygRrzS3": {
+            "opcode": "looks_switchcostumeto",
+            "next": "OeLYTHuugx0YNlj",
+            "parent": "dqdocfsVZPNr9Oc",
+            "inputs": {
+                "COSTUME": [1, "KH0J0Wz8FmNHtMd"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "KH0J0Wz8FmNHtMd": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": "Nx5BQxOKygRrzS3",
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.null", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "baudtFLgmeDuAfZ": {
+            "opcode": "looks_costumenumbername",
+            "next": null,
+            "parent": "OeLYTHuugx0YNlj",
+            "inputs": {},
+            "fields": {
+                "NUMBER_NAME": ["number", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "aQ1kKvQo1s4Pmcx": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "Lr49ygTFsuh0TQg",
+            "inputs": {
+                "VALUE": [3, "jxUdV9iNnjvj75l", [10, ""]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "jxUdV9iNnjvj75l": {
+            "opcode": "operator_and",
+            "next": null,
+            "parent": "aQ1kKvQo1s4Pmcx",
+            "inputs": {
+                "OPERAND2": [2, "V7DCUmxqnpB2zFZ"],
+                "OPERAND1": [2, "g9V16EjL7DFE03v"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "V7DCUmxqnpB2zFZ": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "jxUdV9iNnjvj75l",
+            "inputs": {
+                "OPERAND1": [3, "Sz5cyHXfNoZlOxG", [10, ""]],
+                "OPERAND2": [3, "60eUiE6kfi0DMTX", [10, "50"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "g9V16EjL7DFE03v": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "jxUdV9iNnjvj75l",
+            "inputs": {
+                "OPERAND1": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_case1",
+                        "ro:U.rH.Iwe=DfaxVoOt"
+                    ],
+                    [10, ""]
+                ],
+                "OPERAND2": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_case2",
+                        ".t8F9J_3;17pNm=57u8f"
+                    ],
+                    [10, "50"]
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "60eUiE6kfi0DMTX": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "V7DCUmxqnpB2zFZ",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value2", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "Sz5cyHXfNoZlOxG": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "V7DCUmxqnpB2zFZ",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["value1", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "Lr49ygTFsuh0TQg": {
+            "opcode": "looks_switchcostumeto",
+            "next": "aQ1kKvQo1s4Pmcx",
+            "parent": "g4mFMSsyRDGUelG",
+            "inputs": {
+                "COSTUME": [
+                    3,
+                    [
+                        12,
+                        "$TB.tmp.fn_exactEquals_oldCostume",
+                        "K/?4!0K?gwnaZ?9#?wxC"
+                    ],
+                    "*"
+                ]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "E7CDMiGmSIRt99p": {
+            "opcode": "looks_costume",
+            "next": null,
+            "parent": null,
+            "inputs": {},
+            "fields": {
+                "COSTUME": ["$TB.Z", null]
+            },
+            "shadow": true,
+            "topLevel": true,
+            "x": 187,
+            "y": 1378
+        }
+    },
+    "vars": {
+        "jd$|N46RDx9/ZMn:zyS[": ["$TB.tmp.fn_exactEquals_i", 4],
+        "ro:U.rH.Iwe=DfaxVoOt": ["$TB.tmp.fn_exactEquals_case1", "lll"],
+        ".t8F9J_3;17pNm=57u8f": ["$TB.tmp.fn_exactEquals_case2", "lll"],
+        "NW%.R-i^23HXa7GN-jf?": ["$TB.tmp.fn_exactEquals_costumeStart", 1],
+        "K/?4!0K?gwnaZ?9#?wxC": ["$TB.tmp.fn_exactEquals_oldCostume", 1]
+    },
+    "costumes": [
+        {
+            "name": "$TB.null",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.A",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.B",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.C",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.D",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.E",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.F",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.G",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.H",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.I",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.J",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.K",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.L",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.M",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.N",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.O",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.P",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.Q",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.R",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.S",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.T",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.U",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.V",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.W",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.X",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.Y",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        },
+        {
+            "name": "$TB.Z",
+            "dataFormat": "svg",
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180,
+            "bitmapResolution": 1
+        }
+    ]
+}

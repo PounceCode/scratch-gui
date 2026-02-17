@@ -217,6 +217,8 @@ async function convert(project) {
                     case "startsWith": await handleBlock("startsWith", 2, data); break
                     case "endsWith": await handleBlock("endsWith", 2, data); break
                     case "forceSetSize": await handleBlock("forceSetSize", null, data); break
+                    case "inlineAsk": await handleBlock("inlineAsk", 1, data); break
+                    case "exactEquals": await handleBlock("exactEquals", 2, data); break
                 }
             }
         }

@@ -1,0 +1,90 @@
+{
+    "blocks": {
+        "SHXb7Ie1rLPZFAi": {
+            "opcode": "procedures_definition",
+            "next": "cvUEmrVLdYI7tln",
+            "parent": null,
+            "inputs": {
+                "custom_block": [1, "xO6uiNBtJwy26rS"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 44,
+            "y": 44
+        },
+        "xO6uiNBtJwy26rS": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "SHXb7Ie1rLPZFAi",
+            "inputs": {
+                "6+uH59`,NY*UaCLlm?mZ": [1, "O3aLIMry3j2eP1O"]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def.inlineAsk %s",
+                "argumentids": "[\"6+uH59`,NY*UaCLlm?mZ\"]",
+                "argumentnames": "[\"question\"]",
+                "argumentdefaults": "[\"\"]",
+                "warp": "false"
+            }
+        },
+        "O3aLIMry3j2eP1O": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "xO6uiNBtJwy26rS",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["question", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "cvUEmrVLdYI7tln": {
+            "opcode": "sensing_askandwait",
+            "next": "DnLRG4oYqQmJtlS",
+            "parent": "SHXb7Ie1rLPZFAi",
+            "inputs": {
+                "QUESTION": [3, "KmXtB7VLMHR45RB", [10, "What's your name?"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "KmXtB7VLMHR45RB": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "cvUEmrVLdYI7tln",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["question", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "iC4cStq4gGymbK8": {
+            "opcode": "sensing_answer",
+            "next": null,
+            "parent": "DnLRG4oYqQmJtlS",
+            "inputs": {},
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "DnLRG4oYqQmJtlS": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "cvUEmrVLdYI7tln",
+            "inputs": {
+                "VALUE": [3, "iC4cStq4gGymbK8", [10, ""]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        }
+    }
+}

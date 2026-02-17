@@ -167,6 +167,20 @@
                         }
                     },
                     {
+                        opcode: "inlineAsk",
+                        blockType: Scratch.BlockType.REPORTER,
+                        text: 'ask [QUESTION] and wait',
+                        color1: Colors.Sensing.primary,
+                        color2: Colors.Sensing.secondary,
+                        color3: Colors.Sensing.tertiary,
+                        arguments: {
+                            QUESTION: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: "How are you today?"
+                            }
+                        }
+                    },
+                    {
                         text: 'Operators',
                         blockType: Scratch.BlockType.LABEL
                     },
@@ -185,6 +199,24 @@
                             TWO: {
                                 type: Scratch.ArgumentType.NUMBER,
                                 defaultValue: ''
+                            }
+                        }
+                    },
+                    {
+                        opcode: 'exactEquals',
+                        blockType: Scratch.BlockType.BOOLEAN,
+                        text: '[ONE] exactly equals [TWO]',
+                        color1: Colors.Operators.primary,
+                        color2: Colors.Operators.secondary,
+                        color3: Colors.Operators.tertiary,
+                        arguments: {
+                            ONE: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: 'Apple'
+                            },
+                            TWO: {
+                                type: Scratch.ArgumentType.STRING,
+                                defaultValue: 'apple'
                             }
                         }
                     },
@@ -416,6 +448,15 @@
 
         forceSetSize(args, util) {
             util.target.setSize(args.SIZE, false)
+        }
+
+        exactEquals(args) {
+            return args.ONE == args.TWO
+        }
+
+        async inlineAsk(args, util) {
+            await vm.runtime.ext_scratch3_sensing.askAndWait(args, util)
+            return vm.runtime.ext_scratch3_sensing.getAnswer()
         }
     }
     Scratch.extensions.register(new MoreBlocks());
