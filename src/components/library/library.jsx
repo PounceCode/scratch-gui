@@ -63,9 +63,13 @@ class LibraryComponent extends React.Component {
         setTimeout(() => {
             this.setState({
                 canDisplay: true,
-                filterQuery: '',
-                selectedTag: 'scratch'
             });
+            if (this.props.id == "extensionLibrary") {
+                this.setState({
+                    filterQuery: '',
+                    selectedTag: 'scratch'
+                })
+            }
         });
         if (this.props.setStopHandler) this.props.setStopHandler(this.handlePlayingEnd);
     }
@@ -263,7 +267,7 @@ class LibraryComponent extends React.Component {
                 id={this.props.id}
                 onRequestClose={this.handleClose}
             >
-                {(this.props.filterable || this.props.tags) && (
+                {((this.props.filterable || this.props.tags) && this.props.id != "extensionLibrary") && (
                     <div className={styles.filterBar}>
                         {this.props.filterable && (
                             <Filter
@@ -302,7 +306,7 @@ class LibraryComponent extends React.Component {
                 )}
                 <div
                     className={classNames(styles.libraryScrollGrid, {
-                        [styles.withFilterBar]: this.props.filterable || this.props.tags
+                        [styles.withFilterBar]: ((this.props.filterable || this.props.tags) && this.props.id != "extensionLibrary")
                     })}
                     ref={this.setFilteredDataRef}
                 >
