@@ -111,6 +111,24 @@
                         }
                     },
                     {
+                        opcode: "goToXYWithoutFencing",
+                        blockType: Scratch.BlockType.COMMAND,
+                        text: 'go to x: [X] y: [Y] without fencing',
+                        color1: Colors.Motion.primary,
+                        color2: Colors.Motion.secondary,
+                        color3: Colors.Motion.tertiary,
+                        arguments: {
+                            X: {
+                                type: Scratch.ArgumentType.NUMBER,
+                                defaultValue: 0
+                            },
+                            Y: {
+                                type: Scratch.ArgumentType.NUMBER,
+                                defaultValue: 0
+                            }
+                        }
+                    },
+                    {
                         text: 'Looks',
                         blockType: Scratch.BlockType.LABEL
                     },
@@ -457,6 +475,10 @@
         async inlineAsk(args, util) {
             await vm.runtime.ext_scratch3_sensing.askAndWait(args, util)
             return vm.runtime.ext_scratch3_sensing.getAnswer()
+        }
+
+        goToXYWithoutFencing(args, util) {
+            util.target.setXY(args.X, args.Y, null, true)
         }
     }
     Scratch.extensions.register(new MoreBlocks());

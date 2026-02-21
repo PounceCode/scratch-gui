@@ -231,6 +231,7 @@ async function convert(project) {
                     case "forceSetSize": await handleBlock("forceSetSize", null, data); break
                     case "inlineAsk": await handleBlock("inlineAsk", 1, data); break
                     case "exactEquals": await handleBlock("exactEquals", 2, data); break
+                    case "goToXYWithoutFencing": await handleBlock("goToXYWithoutFencing", null, data); break
                 }
             }
         }
