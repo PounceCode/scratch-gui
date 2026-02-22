@@ -45,6 +45,7 @@ const motion = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
+        <block type="motion_tb_turnAround"></block>
         ${blockSeparator}
         <block type="motion_goto">
             <value name="TO">
@@ -60,6 +61,18 @@ const motion = function (isInitialSetup, isStage, targetId, colors) {
             </value>
             <value name="Y">
                 <shadow id="movey" type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="motion_tb_goToXYWithoutFencing">
+            <value name="X">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="Y">
+                <shadow type="math_number">
                     <field name="NUM">0</field>
                 </shadow>
             </value>
@@ -103,6 +116,18 @@ const motion = function (isInitialSetup, isStage, targetId, colors) {
         <block type="motion_pointtowards">
             <value name="TOWARDS">
                 <shadow type="motion_pointtowards_menu">
+                </shadow>
+            </value>
+        </block>
+        <block type="motion_tb_pointTowardsXY">
+            <value name="X">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="Y">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
                 </shadow>
             </value>
         </block>
@@ -222,6 +247,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                     </shadow>
                 </value>
             </block>
+            <block type="looks_tb_previousBackdrop"/>
             <block type="looks_nextbackdrop"/>
         ` : `
             <block id="${targetId}_switchcostumeto" type="looks_switchcostumeto">
@@ -231,6 +257,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                     </shadow>
                 </value>
             </block>
+            <block type="looks_tb_previousCostume"/>
             <block type="looks_nextcostume"/>
             <block type="looks_switchbackdropto">
                 <value name="BACKDROP">
@@ -249,6 +276,13 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                 </value>
             </block>
             <block type="looks_setsizeto">
+                <value name="SIZE">
+                    <shadow type="math_number">
+                        <field name="NUM">100</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="looks_tb_forceSetSize">
                 <value name="SIZE">
                     <shadow type="math_number">
                         <field name="NUM">100</field>
@@ -480,6 +514,18 @@ const sensing = function (isInitialSetup, isStage, targetId, colors) {
                     <shadow type="sensing_distancetomenu"/>
                 </value>
             </block>
+            <block type="sensing_tb_distanceToXY">
+                <value name="X">
+                    <shadow id="movex" type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="Y">
+                    <shadow id="movey" type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
             ${blockSeparator}
         `}
         ${isInitialSetup ? '' : `
@@ -487,6 +533,13 @@ const sensing = function (isInitialSetup, isStage, targetId, colors) {
                 <value name="QUESTION">
                     <shadow type="text">
                         <field name="TEXT">${name}</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="sensing_tb_inlineAsk">
+                <value name="QUESTION">
+                    <shadow type="text">
+                        <field name="TEXT">How are you today?</field>
                     </shadow>
                 </value>
             </block>
@@ -587,6 +640,18 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
+        <block type="operator_tb_power">
+            <value name="ONE">
+                <shadow type="math_number">
+                    <field name="NUM"/>
+                </shadow>
+            </value>
+            <value name="TWO">
+                <shadow type="math_number">
+                    <field name="NUM"/>
+                </shadow>
+            </value>
+        </block>
         ${blockSeparator}
         <block type="operator_random">
             <value name="FROM">
@@ -637,10 +702,42 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
                 </shadow>
             </value>
         </block>
+        <block type="operator_tb_exactEquals">
+            <value name="ONE">
+                <shadow type="text">
+                    <field name="TEXT">Apple</field>
+                </shadow>
+            </value>
+            <value name="TWO">
+                <shadow type="text">
+                    <field name="TEXT">apple</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_tb_inlineIf">
+            <value name="IFTRUE">
+                <shadow type="text">
+                    <field name="TEXT">apple</field>
+                </shadow>
+            </value>
+            <value name="IFFALSE">
+                <shadow type="text">
+                    <field name="TEXT">banana</field>
+                </shadow>
+            </value>
+        </block>
         ${blockSeparator}
         <block type="operator_and"/>
         <block type="operator_or"/>
         <block type="operator_not"/>
+        ${blockSeparator}
+        <block type="operator_tb_true"/>
+        <block type="operator_tb_false"/>
+        ${blockSeparator}
+        <block type="operator_tb_newLine"/>
+        <block type="operator_tb_pi"/>
+        <block type="operator_tb_e"/>
+        <block type="operator_tb_infinity"/>
         ${blockSeparator}
         ${isInitialSetup ? '' : `
             <block type="operator_join">
@@ -673,6 +770,47 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
                         <field name="TEXT">${apple}</field>
                     </shadow>
                 </value>
+            </block>
+            <block type="operator_tb_substring">
+                <value name="START">
+                    <shadow type="math_whole_number">
+                        <field name="NUM">2</field>
+                    </shadow>
+                </value>
+                <value name="END">
+                    <shadow type="math_whole_number">
+                        <field name="NUM">4</field>
+                    </shadow>
+                </value>
+                <value name="TEXT">
+                    <shadow type="text">
+                        <field name="TEXT">banana</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="operator_tb_startsWith">
+              <value name="TEXT">
+                <shadow type="text">
+                  <field name="TEXT">apple</field>
+                </shadow>
+              </value>
+              <value name="STARTS">
+                <shadow type="text">
+                  <field name="TEXT">app</field>
+                </shadow>
+              </value>
+            </block>
+            <block type="operator_tb_endsWith">
+              <value name="TEXT">
+                <shadow type="text">
+                  <field name="TEXT">banana</field>
+                </shadow>
+              </value>
+              <value name="ENDS">
+                <shadow type="text">
+                  <field name="TEXT">ana</field>
+                </shadow>
+              </value>
             </block>
             <block type="operator_contains" id="operator_contains">
               <value name="STRING1">

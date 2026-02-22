@@ -6,7 +6,7 @@
 Everything then gets compiled into Scratch-compatible code. Every new block in ThunderBlocks should also work in Scratch. This allows for the creation of many complex projects easily.
 
 
-To see a full list of everything added, check out the "More Blocks" extension.
+Check out the block palette to see the new features.
 
 ## Setup
 

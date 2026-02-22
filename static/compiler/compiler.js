@@ -9,8 +9,16 @@ function download(filename, blob) {
     URL.revokeObjectURL(element.href);
 }
 
+// const argOrder = {
+//     'tb_': ['STEPS', 'DURATION'],
+// };
+
 async function compileToScratch() {
-    blockInfo = vm.runtime._blockInfo.find(item => item.id == 'moreblocksextension').blocks;
+    // blockInfo = vm.runtime._blockInfo.find(item => item.id == 'moreblocksextension').blocks;
+    blockInfo = {
+        "inlineIf": ['CONDITION', 'IFTRUE', 'IFFALSE']
+    }
+
     const toCompile = JSON.parse(vm.toJSON());
     console.log('compiling', toCompile);
     try {
@@ -69,7 +77,8 @@ async function addDef(receivedData) {
     let oldValues = Object.values(block.inputs);
     let oldKeys = Object.keys(block.inputs);
 
-    const correctInputOrder = Object.keys(blockInfo.find(block => block.info.opcode == blockName)?.info.arguments ?? block.inputs);
+    // const correctInputOrder = Object.keys(blockInfo.find(block => block.info.opcode == blockName)?.info.arguments ?? block.inputs);
+    const correctInputOrder = blockInfo[blockName] ?? Object.keys(block.inputs);
 
     console.log(correctInputOrder)
 
@@ -198,12 +207,12 @@ async function convert(project) {
 
         // replace custom definitions (eg: exponent block)
         const addedDefs = [];
-        const moreBlockStart = 'moreblocksextension_';
+        // const moreBlockStart = 'tb_';
         const originalBlocks = Object.keys(blocks)
         for (const id of Object.keys(blocks)) {
             const block = blocks[id];
-            if (block.opcode.startsWith(moreBlockStart)) {
-                const bName = block.opcode.split('_')[1];
+            if (block.opcode.split("_")[1] == "tb") {
+                const bName = block.opcode.split('_')[2];
                 const data = {
                     blockName: null,
                     addedDefs: addedDefs,
