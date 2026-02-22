@@ -165,7 +165,7 @@ const Footer = () => (
                             id="tw.feedback"
                         />
                     </a>
-                    <a href="https://github.com/TurboWarp/">
+                    <a href="https://github.com/ThunderBlocksEngine/">
                         <FormattedMessage
                             defaultMessage="Source Code"
                             description="Link to source code"
