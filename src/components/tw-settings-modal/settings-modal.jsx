@@ -69,7 +69,8 @@ class UnwrappedSetting extends React.Component {
         return (
             <div
                 className={classNames(styles.setting, {
-                    [styles.active]: this.props.active
+                    [styles.active]: this.props.active,
+                    [styles.disabled]: this.props.disabled
                 })}
             >
                 <div className={styles.label}>
@@ -99,6 +100,7 @@ class UnwrappedSetting extends React.Component {
 UnwrappedSetting.propTypes = {
     intl: intlShape,
     active: PropTypes.bool,
+    disabled: PropTypes.bool,
     help: PropTypes.node,
     primary: PropTypes.node,
     secondary: PropTypes.node,
@@ -106,22 +108,25 @@ UnwrappedSetting.propTypes = {
 };
 const Setting = injectIntl(UnwrappedSetting);
 
-const BooleanSetting = ({value, onChange, label, ...props}) => (
+const BooleanSetting = ({value, onChange, label, disabled, ...props}) => (
     <Setting
         {...props}
         active={value}
+        disabled={disabled} // Pass disabled state to the Setting container
         primary={
-            <label className={styles.label}>
+            <label className={classNames(styles.label, {[styles.disabled]: disabled})}>
                 <FancyCheckbox
                     className={styles.checkbox}
                     checked={value}
-                    onChange={onChange}
+                    onChange={disabled ? () => {} : onChange} // Block clicks if disabled
+                    disabled={disabled} // Ensure the checkbox appears grayed out
                 />
                 {label}
             </label>
         }
     />
 );
+
 BooleanSetting.propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.bool.isRequired,
@@ -303,6 +308,8 @@ const WarpTimer = props => (
 const DisableCompiler = props => (
     <BooleanSetting
         {...props}
+        value={true}
+        disabled={true}
         label={
             <FormattedMessage
                 defaultMessage="Disable Compiler"
@@ -313,7 +320,7 @@ const DisableCompiler = props => (
         help={
             <FormattedMessage
                 // eslint-disable-next-line max-len
-                defaultMessage="Disables the {APP_NAME} compiler. You may want to enable this while editing projects so that scripts update immediately. Otherwise, you should never enable this."
+                defaultMessage="Disables the {APP_NAME} compiler. The compiler is disabled in {APP_NAME} to emulate Scratch's capabilities."
                 description="Disable Compiler help"
                 id="tw.settingsModal.disableCompilerHelp"
                 values={{

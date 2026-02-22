@@ -12,6 +12,6 @@ const manifest = {
   "tags": [
     "danger"
   ],
-  "enabledByDefault": true
+  "enabledByDefault": false
 };
 export default manifest;

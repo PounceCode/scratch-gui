@@ -266,6 +266,7 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
                     </shadow>
                 </value>
             </block>
+            <block type="looks_tb_previousBackdrop"/>
             <block type="looks_nextbackdrop"/>
             ${blockSeparator}
             <block type="looks_changesizeby">

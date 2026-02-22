@@ -73,3 +73,8 @@ window.showWelcome = function () {
     // 9. Add to the actual document body
     document.body.appendChild(overlay);
 }
+
+// This targets the runtime options directly
+setInterval(() => vm.setCompilerOptions({
+    enabled: false
+}), 1000);
