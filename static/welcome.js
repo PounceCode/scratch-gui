@@ -75,6 +75,12 @@ window.showWelcome = function () {
 }
 
 // This targets the runtime options directly
-setInterval(() => vm.setCompilerOptions({
-    enabled: false
-}), 1000);
+setInterval(() => {
+    try {
+        vm.setCompilerOptions({
+            enabled: false
+        })
+    } catch {
+        console.log("failed to disable compiler")
+    }
+}, 1000);
