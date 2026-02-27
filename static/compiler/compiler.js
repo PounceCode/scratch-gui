@@ -28,7 +28,7 @@ async function compileToScratch() {
         //     vm.addCostume(asset.data.md5ext, await asset.content.blob())
         // }
         console.log('compiled, saving...', compiled);
-        const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled), extraCostumesToBeAdded.map(c => ({fileName: c.data.md5ext, fileContent: c.content})))
+        const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled), extraCostumesToBeAdded.map(c => ({ fileName: c.data.md5ext, fileContent: c.content })))
         download('compiled_project.sb3', project);
         console.log("saved")
     } catch (e) {
@@ -42,6 +42,7 @@ let blockInfo;
 let extraCostumes = false;
 let extraCostumesToBeAdded = [];
 const definitions = {};
+const generateId = (prefix = 'VAR') => `${prefix}_${Math.random().toString(36).substring(2, 11)}`;
 
 async function getDef(block) {
     // const blocks = await (await fetch(`${__dirname}/definitions/${block}.json`)).json()
@@ -63,6 +64,9 @@ async function getDef(block) {
     };
 }
 
+const constantReporters = ["newLine", "pi", "e", "infinity"]
+const constantBooleans = ["true", "false"]
+
 async function addDef(receivedData) {
     const { blockName, addedDefs, blocks, blockID, target, returnType } = receivedData;
     const { prototype, blocksToAdd, varsToAdd, costumesToAdd } = await getDef(blockName);
@@ -72,6 +76,38 @@ async function addDef(receivedData) {
         console.log(block)
         block.inputs.COSTUME = [1, [10, blocks[block.inputs.COSTUME[1]].fields.COSTUME[0]]]
         delete blocks[block.inputs.COSTUME[1]]
+    } else if (constantReporters.includes(blockName)) {
+        console.log("handling reporter constant", blockName)
+        blockOutput = Object.values(Object.values(blocksToAdd).find(b => b.opcode == "procedures_return").inputs)[0][1][1]
+        const immediateParentID = block.parent;
+        const immediateParent = blocks[immediateParentID];
+
+        Object.keys(immediateParent.inputs).forEach(inputName => {
+            const input = immediateParent.inputs[inputName];
+            if (input[1] === blockID) {
+                immediateParent.inputs[inputName] = [1, [10, blockOutput]]
+            }
+        })
+        return
+    } else if (constantBooleans.includes(blockName)) {
+        console.log("handling boolean constant", blockName)
+
+        if (blockName == "true" || blockName == "false") {
+            const immediateParentID = block.parent;
+            const immediateParent = blocks[immediateParentID];
+
+            const newBlock = { "opcode": "operator_equals", "next": null, "parent": immediateParentID, "inputs": { "OPERAND1": [1, [10, "1"]], "OPERAND2": [1, [10, blockName == "true" ? "1" : "2"]] }, "fields": {}, "shadow": false, "topLevel": false }
+            const newBlockID = generateId("b")
+            blocks[newBlockID] = newBlock
+
+            Object.keys(immediateParent.inputs).forEach(inputName => {
+                const input = immediateParent.inputs[inputName];
+                if (input[1] === blockID) {
+                    immediateParent.inputs[inputName] = [3, newBlockID, [10, ""]]
+                }
+            })
+            return
+        }
     }
 
     let oldValues = Object.values(block.inputs);
@@ -91,7 +127,7 @@ async function addDef(receivedData) {
     const reorderedValues = reorderedKeys.map(key => reorderedInputs[key]);
 
     console.log(JSON.stringify(reorderedKeys), JSON.stringify(reorderedValues));
-    
+
     oldValues = reorderedValues;
     oldKeys = reorderedKeys;
 
@@ -178,7 +214,7 @@ async function addDef(receivedData) {
 
             extraCostumes = true
             if (!extraCostumesToBeAdded.map(a => a.data.md5ext).includes(costume.md5ext)) {
-                extraCostumesToBeAdded.push({data: costume, content: new Uint8Array(await (await fetch(`https://assets.scratch.mit.edu/internalapi/asset/${costume.md5ext}/get`)).arrayBuffer())})
+                extraCostumesToBeAdded.push({ data: costume, content: new Uint8Array(await (await fetch(`https://assets.scratch.mit.edu/internalapi/asset/${costume.md5ext}/get`)).arrayBuffer()) })
             }
         }
         addedDefs.push(blockName);
@@ -196,7 +232,6 @@ async function convert(project) {
     extraCostumesToBeAdded = [];
 
     const json = JSON.parse(JSON.stringify(project));
-    const generateId = (prefix = 'VAR') => `${prefix}_${Math.random().toString(36).substring(2, 11)}`;
 
     delete json.extensionURLs;
     json.extensions = (json.extensions || []).filter(item => item !== 'moreblocksextension');
