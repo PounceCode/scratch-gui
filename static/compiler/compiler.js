@@ -234,7 +234,7 @@ async function convert(project) {
     const json = JSON.parse(JSON.stringify(project));
 
     delete json.extensionURLs;
-    json.extensions = (json.extensions || []).filter(item => item !== 'moreblocksextension');
+    json.extensions = (json.extensions || []).filter(item => item != 'moreblocksextension' && item != 'extra');
 
     for (const target of json.targets) {
         const blocks = target.blocks;
@@ -276,6 +276,7 @@ async function convert(project) {
                     case "inlineAsk": await handleBlock("inlineAsk", 1, data); break
                     case "exactEquals": await handleBlock("exactEquals", 2, data); break
                     case "goToXYWithoutFencing": await handleBlock("goToXYWithoutFencing", null, data); break
+                    case "comment": await handleBlock("comment", null, data); break
                 }
             }
         }

@@ -30,7 +30,7 @@ const isTrustedExtension = url => (
     // For development.
     url.startsWith('http://localhost:8000/') ||
 
-    new URL(url).pathname.endsWith("/compiler/extension.js") ||
+    new URL(url).pathname.startsWith("/compiler/extension") ||
 
     extensionsTrustedByUser.has(url)
 );
