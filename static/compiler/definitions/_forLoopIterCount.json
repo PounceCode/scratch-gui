@@ -1,0 +1,135 @@
+{
+  "p": {
+    "opcode": "operator_add",
+    "next": null,
+    "parent": null,
+    "inputs": {
+      "NUM1": [
+        3,
+        "j",
+        [
+          4,
+          ""
+        ]
+      ],
+      "NUM2": [
+        1,
+        [
+          4,
+          "1"
+        ]
+      ]
+    },
+    "fields": {},
+    "shadow": false,
+    "topLevel": false
+  },
+  "j": {
+    "opcode": "operator_mathop",
+    "next": null,
+    "parent": "p",
+    "inputs": {
+      "NUM": [
+        3,
+        "k",
+        [
+          4,
+          ""
+        ]
+      ]
+    },
+    "fields": {
+      "OPERATOR": [
+        "floor"
+      ]
+    },
+    "shadow": false,
+    "topLevel": false
+  },
+  "k": {
+    "opcode": "operator_mathop",
+    "next": null,
+    "parent": "j",
+    "inputs": {
+      "NUM": [
+        3,
+        "l",
+        [
+          4,
+          ""
+        ]
+      ]
+    },
+    "fields": {
+      "OPERATOR": [
+        "abs"
+      ]
+    },
+    "shadow": false,
+    "topLevel": false
+  },
+  "l": {
+    "opcode": "operator_divide",
+    "next": null,
+    "parent": "k",
+    "inputs": {
+      "NUM1": [
+        3,
+        "q",
+        [
+          4,
+          ""
+        ]
+      ],
+      "NUM2": [
+        3,
+        [
+          12,
+          "step",
+          "}2sd@YCR/3YWw8x0V7j,"
+        ],
+        [
+          4,
+          ""
+        ]
+      ]
+    },
+    "fields": {},
+    "shadow": false,
+    "topLevel": false
+  },
+  "q": {
+    "opcode": "operator_subtract",
+    "next": null,
+    "parent": "l",
+    "inputs": {
+      "NUM1": [
+        3,
+        [
+          12,
+          "stop",
+          "I*2Grbitj_/NF2En+gyy"
+        ],
+        [
+          4,
+          ""
+        ]
+      ],
+      "NUM2": [
+        3,
+        [
+          12,
+          "start",
+          "Gb]N!w-16Kr:=CC_+TPC"
+        ],
+        [
+          4,
+          ""
+        ]
+      ]
+    },
+    "fields": {},
+    "shadow": false,
+    "topLevel": false
+  }
+}

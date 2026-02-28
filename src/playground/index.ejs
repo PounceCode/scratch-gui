@@ -10,7 +10,9 @@
     <% if (htmlWebpackPlugin.options.root === "/" || htmlWebpackPlugin.options.root === "") { %>
       <link rel="manifest" href="<%= htmlWebpackPlugin.options.root %>manifest.webmanifest">
     <% } %>
+    <script src="<%= htmlWebpackPlugin.options.root %>compiler/main.js"></script>
     <script src="<%= htmlWebpackPlugin.options.root %>compiler/compiler.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.root %>compiler/minifier.js"></script>
     <script src="<%= htmlWebpackPlugin.options.root %>welcome.js"></script>
     <style>
       .splash-screen {

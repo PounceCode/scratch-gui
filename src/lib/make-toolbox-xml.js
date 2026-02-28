@@ -459,6 +459,30 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
         <block id="wait_until" type="control_wait_until"/>
         <block id="repeat_until" type="control_repeat_until"/>
         <block id="while" type="control_while"/>
+        <block id="while" type="control_tb_for">
+            <value name="START">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="STOP">
+                <shadow type="math_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+            <value name="STEP">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        <block id="while" type="control_for_each">
+            <value name="VALUE">
+                <shadow type="math_whole_number">
+                    <field name="NUM">10</field>
+                </shadow>
+            </value>
+        </block>
         ${blockSeparator}
         <block type="control_stop"/>
         ${blockSeparator}

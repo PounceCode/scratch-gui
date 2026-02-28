@@ -1,48 +1,67 @@
-function download(filename, blob) {
-    // const blob = new Blob([text], { type: 'application/json' });
-    const element = document.createElement('a');
-    element.href = URL.createObjectURL(blob);
-    element.download = filename;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    URL.revokeObjectURL(element.href);
-}
-
-// const argOrder = {
-//     'tb_': ['STEPS', 'DURATION'],
-// };
-
-async function compileToScratch() {
-    // blockInfo = vm.runtime._blockInfo.find(item => item.id == 'moreblocksextension').blocks;
-    blockInfo = {
-        "inlineIf": ['CONDITION', 'IFTRUE', 'IFFALSE']
-    }
-
-    const toCompile = JSON.parse(vm.toJSON());
-    console.log('compiling', toCompile);
-    try {
-        const compiled = await convert(toCompile);
-        console.log("costumes", extraCostumesToBeAdded)
-        // for (const asset of extraCostumesToBeAdded) {
-        //     vm.addCostume(asset.data.md5ext, await asset.content.blob())
-        // }
-        console.log('compiled, saving...', compiled);
-        const project = await vm.saveProjectSb3('blob', JSON.stringify(compiled), extraCostumesToBeAdded.map(c => ({ fileName: c.data.md5ext, fileContent: c.content })))
-        download('compiled_project.sb3', project);
-        console.log("saved")
-    } catch (e) {
-        console.log("compilation error", e)
-        alert("Compilation error, check the browser console for more info")
-    }
-}
-
 const __dirname = 'compiler';
-let blockInfo;
+let blockInfo = {
+    "inlineIf": ['CONDITION', 'IFTRUE', 'IFFALSE']
+}
+
 let extraCostumes = false;
 let extraCostumesToBeAdded = [];
 const definitions = {};
 const generateId = (prefix = 'VAR') => `${prefix}_${Math.random().toString(36).substring(2, 11)}`;
+
+function getBlockIDByOpcode(object, value) {
+    return Object.keys(object).find(key => object[key].opcode === value);
+}
+
+// const globs.for.iterCount.id = generateId("glob")
+// const globs.for.iterCount.name = "$TB.GLOB.forLoopIterCount"
+const globs = {}
+globs.for = {
+    start: { id: generateId("var"), name: "$TB.GLOB.forLoopStart" },
+    stop: { id: generateId("var"), name: "$TB.GLOB.forLoopStop" },
+    step: { id: generateId("var"), name: "$TB.GLOB.forLoopStep" },
+    iterCount: { id: generateId("glob"), name: "$TB.GLOB.forLoopIterCount" }
+}
+
+
+const generateLongId = () => {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let id = '';
+    for (let i = 0; i < 15; i++) {
+        id += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return id;
+};
+
+function lengthenBlockIds(blocksObj) {
+    const newBlocks = {};
+    const idMap = {};
+
+    // Map old IDs to new ones
+    Object.keys(blocksObj).forEach(oldId => {
+        idMap[oldId] = generateLongId();
+    });
+
+    // Reconstruct with updated references
+    Object.keys(blocksObj).forEach(oldId => {
+        const block = JSON.parse(JSON.stringify(blocksObj[oldId])); // Deep copy
+        const newId = idMap[oldId];
+
+        if (block.next && idMap[block.next]) block.next = idMap[block.next];
+        if (block.parent && idMap[block.parent]) block.parent = idMap[block.parent];
+
+        if (block.inputs) {
+            for (const inputData of Object.values(block.inputs)) {
+                // Scratch input format: [shadow_status, block_id_or_value]
+                if (Array.isArray(inputData) && typeof inputData[1] === 'string' && idMap[inputData[1]]) {
+                    inputData[1] = idMap[inputData[1]];
+                }
+            }
+        }
+        newBlocks[newId] = block;
+    });
+
+    return newBlocks;
+}
 
 async function getDef(block) {
     // const blocks = await (await fetch(`${__dirname}/definitions/${block}.json`)).json()
@@ -50,6 +69,8 @@ async function getDef(block) {
     // if (await checkUrlExists(`${__dirname}/vars/${block}.json`)) {
     //     vars = await (await fetch(`${__dirname}/vars/${block}.json`)).json()
     // }
+    if (block == "for") return {}
+
     const data = definitions[block] ?? (await (await fetch(`${__dirname}/definitions/${block}.json`)).json());
     if (!definitions[block]) definitions[block] = data;
 
@@ -72,6 +93,8 @@ async function addDef(receivedData) {
     const { prototype, blocksToAdd, varsToAdd, costumesToAdd } = await getDef(blockName);
     const block = blocks[blockID];
 
+    console.log("handling block", blockName)
+
     if (blockName == "_switchCostume") {
         console.log(block)
         block.inputs.COSTUME = [1, [10, blocks[block.inputs.COSTUME[1]].fields.COSTUME[0]]]
@@ -88,6 +111,8 @@ async function addDef(receivedData) {
                 immediateParent.inputs[inputName] = [1, [10, blockOutput]]
             }
         })
+
+        delete blocks[blockID]
         return
     } else if (constantBooleans.includes(blockName)) {
         console.log("handling boolean constant", blockName)
@@ -106,9 +131,15 @@ async function addDef(receivedData) {
                     immediateParent.inputs[inputName] = [3, newBlockID, [10, ""]]
                 }
             })
+
+            delete blocks[blockID]
             return
         }
     }
+    // } else if (blockName == "for") {
+
+    //     return
+    // }
 
     let oldValues = Object.values(block.inputs);
     let oldKeys = Object.keys(block.inputs);
@@ -221,10 +252,258 @@ async function addDef(receivedData) {
     }
 }
 
-async function handleBlock(name, returnType, data) {
+async function handleBlockOther(receivedData) {
+    const { blockName, blocks, blockID, target } = receivedData;
+    const block = blocks[blockID];
+    if (blockName == "for") {
+        console.log("for loop", structuredClone(block))
+        block.opcode = "control_repeat"
+
+        // check if the loop is static/constant
+        // if so, we don't need to add extra variables
+        let isLoopStatic = true
+        for (const inputName of Object.keys(block.inputs)) {
+            const input = block.inputs[inputName]
+            if (["START", "STEP", "STOP"].includes(inputName)) {
+                if (input[0] == 2 || input[0] == 3) {
+                    console.log("loop is not static", input, blockID, blocks[blockID].opcode, blocks, block.inputs)
+                    isLoopStatic = false;
+                    break;
+                }
+            }
+        }
+
+        let newInputs = {}
+
+        // if it's static, we can calculate the iteration count while compiling
+        if (isLoopStatic) {
+            newInputs = {
+                TIMES: [1, [4, Math.floor(Math.abs((parseInt(block.inputs.STOP[1][1]) - parseInt(block.inputs.START[1][1])) / parseInt(block.inputs.STEP[1][1]))) + 1]]
+            }
+        }
+
+        // the block to update the iterator used in the loop
+        const changeBlockID = generateId("var")
+        console.log(block.inputs)
+        if (block.inputs.SUBSTACK) {
+            if (block.inputs.SUBSTACK[1]) {
+                newInputs.SUBSTACK = block.inputs.SUBSTACK
+            } else {
+                // if there's nothing in the loop, add the block
+                console.log("no substack, creating")
+                newInputs.SUBSTACK = [2, changeBlockID]
+            }
+        } else {
+            console.log("no substack, creating")
+            newInputs.SUBSTACK = [2, changeBlockID]
+        }
+
+        // setting the iterator variable
+        const [varName, varID] = block.fields.VARIABLE
+        console.log("loop var", varName, varID)
+        block.fields = {}
+
+        const resetBlockID = generateId("var")
+
+        let iterBlock, iterBlockID, startBlockID, stopBlockID, stepBlockID
+        let resetBlock = {} // the block that resets the iterator variable
+        resetBlock.opcode = 'data_setvariableto';
+        resetBlock.fields = { VARIABLE: [varName, varID] };
+        resetBlock.shadow = false
+        resetBlock.topLevel = false
+        resetBlock.inputs = {}
+        resetBlock.inputs.VALUE = block.inputs.START
+        // resetBlock.inputs.VALUE = [3, [12, globs.for.start.name, globs.for.start.id], [10, '']]
+        if (block.inputs.START[0] <= 3 && typeof block.inputs.START[1] == "string") {
+            blocks[block.inputs.START[1]].parent = resetBlockID
+        }
+
+        console.log("static?", isLoopStatic, block.inputs)
+        if (!isLoopStatic) {
+            // if the loop isn't static, we need to create variables to store the values, and then create the code to bring it all together
+            console.log("fetching for loop def")
+            const varDef = lengthenBlockIds(definitions["_for"] ?? (await (await fetch(`${__dirname}/definitions/_forLoopIterCount.json`)).json()));
+            if (!definitions["_for"]) definitions["_for"] = varDef;
+
+            // the block for the start input
+            let startBlock = {}
+            startBlock.opcode = 'data_setvariableto';
+            startBlock.fields = { VARIABLE: [globs.for.start.name, globs.for.start.id] };
+            startBlock.shadow = false
+            startBlock.topLevel = false
+            startBlock.inputs = {}
+            startBlock.inputs.VALUE = [3, [12, varName, varID], [10, '']]
+
+            // the block for the stop input
+            let stopBlock = {}
+            stopBlock.opcode = 'data_setvariableto';
+            stopBlock.fields = { VARIABLE: [globs.for.stop.name, globs.for.stop.id] };
+            stopBlock.shadow = false
+            stopBlock.topLevel = false
+            stopBlock.inputs = {}
+            stopBlock.inputs.VALUE = block.inputs.STOP
+
+            // the block for the step input
+            let stepBlock = {}
+            stepBlock.opcode = 'data_setvariableto';
+            stepBlock.fields = { VARIABLE: [globs.for.step.name, globs.for.step.id] };
+            stepBlock.shadow = false
+            stepBlock.topLevel = false
+            stepBlock.inputs = {}
+            stepBlock.inputs.VALUE = block.inputs.STEP
+
+            startBlockID = generateId("b")
+            stopBlockID = generateId("b")
+            stepBlockID = generateId("b")
+
+            blocks[startBlockID] = startBlock
+            blocks[stopBlockID] = stopBlock
+            blocks[stepBlockID] = stepBlock
+
+            // Update the parents of any reporter blocks nested in STOP or STEP
+            if (block.inputs.STOP[0] <= 3 && typeof block.inputs.STOP[1] === "string") {
+                blocks[block.inputs.STOP[1]].parent = stopBlockID;
+            }
+            if (block.inputs.STEP[0] <= 3 && typeof block.inputs.STEP[1] === "string") {
+                blocks[block.inputs.STEP[1]].parent = stepBlockID;
+            }
+
+            // make sure the blocks in the inputs have the correct parents
+            for (const inputName of Object.keys(block.inputs)) {
+                const input = block.inputs[inputName]
+                console.log("i", input)
+                // if (input[0] == 3 && typeof input[1] == "string") {
+                // if (input[0] == 2 || input[0] == 3) {
+                switch (inputName) {
+                    case "START":
+                        varDef[getBlockIDByOpcode(varDef, "operator_subtract")].inputs.NUM2 = [3, [12, globs.for.start.name, globs.for.start.id], [10, '']]
+                        break
+                    case "STOP":
+                        const t = varDef[getBlockIDByOpcode(varDef, "operator_subtract")]
+                        t.inputs.NUM1 = [3, [12, globs.for.stop.name, globs.for.stop.id], [10, '']]
+                        break
+                    case "STEP":
+                        const t2 = varDef[getBlockIDByOpcode(varDef, "operator_divide")]
+                        t2.inputs.NUM2 = [3, [12, globs.for.step.name, globs.for.step.id], [10, '']]
+                        break
+                    // varDef[getBlockIDByOpcode(varDef, "operator_divide")].inputs.NUM2 = input
+                }
+                // }
+            }
+
+            // the block that holds the calculation
+            iterBlockID = generateId("b")
+            iterBlock = {}
+            iterBlock.opcode = 'data_setvariableto';
+            iterBlock.fields = { VARIABLE: [globs.for.iterCount.name, globs.for.iterCount.id] };
+            iterBlock.shadow = false
+            iterBlock.topLevel = false
+            iterBlock.inputs = { VALUE: [3, getBlockIDByOpcode(varDef, "operator_add"), [4, ""]] }
+            iterBlock.parent = stepBlockID
+            iterBlock.next = blockID
+            console.log(iterBlock, iterBlockID)
+
+            startBlock.parent = resetBlockID
+            startBlock.next = stopBlockID
+            stopBlock.parent = startBlockID
+            stopBlock.next = stepBlockID
+            stepBlock.parent = stopBlockID
+            stepBlock.next = iterBlockID
+
+            varDef[getBlockIDByOpcode(varDef, "operator_add")].parent = iterBlockID
+            console.log("add", varDef[getBlockIDByOpcode(varDef, "operator_add")])
+
+            newInputs.TIMES = [3, [12, globs.for.iterCount.name, globs.for.iterCount.id], [10, '']]
+
+            // if (block.inputs.STOP[0] <= 3 && typeof block.inputs.STOP[1] == "string") {
+            //     varDef[block.inputs.STOP[1]].parent = getBlockIDByOpcode(varDef, "operator_subtract")
+            // }
+            // if (block.inputs.STEP[0] <= 3 && typeof block.inputs.STEP[1] == "string") {
+            //     varDef[block.inputs.STEP[1]].parent = getBlockIDByOpcode(varDef, "operator_subtract")
+            // }
+
+
+            blocks[iterBlockID] = iterBlock
+
+            // add the blocks to the main object
+            for (const b of Object.keys(varDef)) {
+                blocks[b] = varDef[b]
+            }
+        }
+
+        // the block that updates the iterator variable
+        let changeBlock = {}
+        changeBlock.opcode = 'data_changevariableby';
+        changeBlock.fields = { VARIABLE: [varName, varID] };
+        changeBlock.shadow = false
+        changeBlock.topLevel = false
+        changeBlock.next = null
+        changeBlock.inputs = {}
+        changeBlock.inputs.VALUE = isLoopStatic ? block.inputs.STEP: [3, [12, globs.for.step.name, globs.for.step.id], [10, '']]
+        changeBlock.parent = blockID
+        blocks[changeBlockID] = changeBlock
+
+        let testID = newInputs.SUBSTACK[1]
+        let testBlock = blocks[testID]
+        if (block.inputs.SUBSTACK) {
+            if (block.inputs.SUBSTACK[1]) {
+                while (testBlock.next) {
+                    testID = testBlock.next
+                    testBlock = blocks[testID]
+                }
+                blocks[testID].next = changeBlockID
+                changeBlock.parent = testID
+            }
+        }
+
+        block.inputs = newInputs
+
+        const prevBlockID = block.parent
+
+        // Update the Previous Block (if it exists)
+        if (prevBlockID && blocks[prevBlockID]) {
+            // Check if we are attached via "Next"
+            if (blocks[prevBlockID].next === blockID) {
+                blocks[prevBlockID].next = resetBlockID;
+            }
+            // Check if we are attached via "Substack" (e.g., inside an If or Loop)
+            else {
+                const inputs = blocks[prevBlockID].inputs;
+                for (const key in inputs) {
+                    if (inputs[key][1] === blockID) {
+                        inputs[key][1] = resetBlockID;
+                    }
+                }
+            }
+        } else {
+            // Handle case where StackBlock was the top of the script
+            resetBlock.topLevel = true;
+            resetBlock.x = block.x;
+            resetBlock.y = block.y;
+
+            block.topLevel = false;
+            delete block.x;
+            delete block.y;
+        }
+
+        blocks[resetBlockID] = resetBlock
+        block.parent = iterBlockID ?? resetBlockID
+        resetBlock.parent = prevBlockID
+        resetBlock.next = startBlockID ?? blockID
+
+        console.log(block)
+    }
+}
+
+async function handleBlock(name, returnType, data, useSeperate) {
     data.blockName = name;
     data.returnType = returnType;
-    await addDef(data);
+
+    if (useSeperate) {
+        await handleBlockOther(data);
+    } else {
+        await addDef(data);
+    }
 }
 
 async function convert(project) {
@@ -236,7 +515,12 @@ async function convert(project) {
     delete json.extensionURLs;
     json.extensions = (json.extensions || []).filter(item => item != 'moreblocksextension' && item != 'extra');
 
+    Object.keys(globs.for).forEach(v => {
+        json.targets.find(t => t.isStage).variables[globs.for[v].id] = [globs.for[v].name, 0]
+    })
+
     for (const target of json.targets) {
+        console.log("compiling target", target.name)
         const blocks = target.blocks;
         extraCostumes = false
 
@@ -244,6 +528,23 @@ async function convert(project) {
         const addedDefs = [];
         // const moreBlockStart = 'tb_';
         const originalBlocks = Object.keys(blocks)
+        for (const id of Object.keys(blocks)) {
+            const block = blocks[id];
+            if (block.opcode.split("_")[1] == "tb") {
+                const bName = block.opcode.split('_')[2];
+                const data = {
+                    blockName: null,
+                    addedDefs: addedDefs,
+                    blocks: blocks,
+                    blockID: id,
+                    target: target,
+                };
+                switch (bName) {
+                    case "for": await handleBlock("for", null, data, true); break
+                }
+            }
+        }
+
         for (const id of Object.keys(blocks)) {
             const block = blocks[id];
             if (block.opcode.split("_")[1] == "tb") {
