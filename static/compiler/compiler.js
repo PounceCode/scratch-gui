@@ -578,6 +578,8 @@ async function convert(project) {
                     case "exactEquals": await handleBlock("exactEquals", 2, data); break
                     case "goToXYWithoutFencing": await handleBlock("goToXYWithoutFencing", null, data); break
                     case "comment": await handleBlock("comment", null, data); break
+                    case "ltOrEqual": await handleBlock("ltOrEqual", 2, data); break
+                    case "gtOrEqual": await handleBlock("gtOrEqual", 2, data); break
                 }
             }
         }

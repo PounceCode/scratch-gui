@@ -439,7 +439,7 @@ const control = function (isInitialSetup, isStage, targetId, colors) {
         secondaryColour="${colors.tertiary}">
         <block type="control_wait">
             <value name="DURATION">
-                <shadow type="math_positive_number">
+                <shadow type="math_number">
                     <field name="NUM">1</field>
                 </shadow>
             </value>
@@ -704,6 +704,30 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
             </value>
         </block>
         <block type="operator_lt">
+            <value name="OPERAND1">
+                <shadow type="text">
+                    <field name="TEXT"/>
+                </shadow>
+            </value>
+            <value name="OPERAND2">
+                <shadow type="text">
+                    <field name="TEXT">50</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_tb_gtOrEqual">
+            <value name="OPERAND1">
+                <shadow type="text">
+                    <field name="TEXT"/>
+                </shadow>
+            </value>
+            <value name="OPERAND2">
+                <shadow type="text">
+                    <field name="TEXT">50</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_tb_ltOrEqual">
             <value name="OPERAND1">
                 <shadow type="text">
                     <field name="TEXT"/>

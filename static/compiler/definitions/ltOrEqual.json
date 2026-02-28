@@ -1,0 +1,151 @@
+{
+    "blocks": {
+        "oaUAUOPYVwksvvK": {
+            "opcode": "procedures_definition",
+            "next": "sCYVUPMsXbfBUDc",
+            "parent": null,
+            "inputs": {
+                "custom_block": [1, "L4dfkG4tuSWXfMM"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": true,
+            "x": 98,
+            "y": 116
+        },
+        "L4dfkG4tuSWXfMM": {
+            "opcode": "procedures_prototype",
+            "next": null,
+            "parent": "oaUAUOPYVwksvvK",
+            "inputs": {
+                "Aj;,qDGvDQfBgi@m;s8O": [1, "Rl1A7nhvI7CDcYc"],
+                "n6U04ni]e!_o#UPBn|fB": [1, "DnfK2cEvqmQNC2V"]
+            },
+            "fields": {},
+            "shadow": true,
+            "topLevel": false,
+            "mutation": {
+                "tagName": "mutation",
+                "children": [],
+                "proccode": "$TB.def_ltOrEqual %s %s",
+                "argumentids": "[\"Aj;,qDGvDQfBgi@m;s8O\",\"n6U04ni]e!_o#UPBn|fB\"]",
+                "argumentnames": "[\"arg1\",\"arg2\"]",
+                "argumentdefaults": "[\"\",\"\"]",
+                "warp": "true"
+            }
+        },
+        "sCYVUPMsXbfBUDc": {
+            "opcode": "procedures_return",
+            "next": null,
+            "parent": "oaUAUOPYVwksvvK",
+            "inputs": {
+                "VALUE": [3, "6fK4OzZOTt75mBm", [10, ""]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "Rl1A7nhvI7CDcYc": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "L4dfkG4tuSWXfMM",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["arg1", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "DnfK2cEvqmQNC2V": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "L4dfkG4tuSWXfMM",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["arg2", null]
+            },
+            "shadow": true,
+            "topLevel": false
+        },
+        "YV7Wn9hoaCilpkC": {
+            "opcode": "operator_equals",
+            "next": null,
+            "parent": "6fK4OzZOTt75mBm",
+            "inputs": {
+                "OPERAND1": [3, "cSoLsGPPhTN2eD2", [10, ""]],
+                "OPERAND2": [3, "4o1E1gaOjQDD2w4", [10, "50"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "6fK4OzZOTt75mBm": {
+            "opcode": "operator_or",
+            "next": null,
+            "parent": "sCYVUPMsXbfBUDc",
+            "inputs": {
+                "OPERAND1": [2, "q4pUtJraJL7guB6"],
+                "OPERAND2": [2, "YV7Wn9hoaCilpkC"]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "cSoLsGPPhTN2eD2": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "YV7Wn9hoaCilpkC",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["arg1", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "4o1E1gaOjQDD2w4": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "YV7Wn9hoaCilpkC",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["arg2", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "q4pUtJraJL7guB6": {
+            "opcode": "operator_lt",
+            "next": null,
+            "parent": "6fK4OzZOTt75mBm",
+            "inputs": {
+                "OPERAND1": [3, "q0M75yo0xdLFnA3", [10, ""]],
+                "OPERAND2": [3, "oX2uQ4w8P984ydz", [10, "50"]]
+            },
+            "fields": {},
+            "shadow": false,
+            "topLevel": false
+        },
+        "q0M75yo0xdLFnA3": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "q4pUtJraJL7guB6",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["arg1", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        },
+        "oX2uQ4w8P984ydz": {
+            "opcode": "argument_reporter_string_number",
+            "next": null,
+            "parent": "q4pUtJraJL7guB6",
+            "inputs": {},
+            "fields": {
+                "VALUE": ["arg2", null]
+            },
+            "shadow": false,
+            "topLevel": false
+        }
+    }
+}
