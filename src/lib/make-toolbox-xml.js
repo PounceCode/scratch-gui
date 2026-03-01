@@ -551,6 +551,28 @@ const sensing = function (isInitialSetup, isStage, targetId, colors) {
                     </shadow>
                 </value>
             </block>
+            <block type="sensing_tb_distanceFromXYToXY">
+                <value name="X1">
+                    <shadow id="movex" type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="Y1">
+                    <shadow id="movey" type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="X2">
+                    <shadow id="movex" type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+                <value name="Y2">
+                    <shadow id="movey" type="math_number">
+                        <field name="NUM">10</field>
+                    </shadow>
+                </value>
+            </block>
             ${blockSeparator}
         `}
         ${isInitialSetup ? '' : `
@@ -884,6 +906,18 @@ const operators = function (isInitialSetup, isStage, targetId, colors) {
             <value name="NUM2">
                 <shadow type="math_number">
                     <field name="NUM"/>
+                </shadow>
+            </value>
+        </block>
+        <block type="operator_tb_atan2">
+            <value name="NUM1">
+                <shadow type="math_number">
+                    <field name="NUM">1.5</field>
+                </shadow>
+            </value>
+            <value name="NUM2">
+                <shadow type="math_number">
+                    <field name="NUM">3</field>
                 </shadow>
             </value>
         </block>

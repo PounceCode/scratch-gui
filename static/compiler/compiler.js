@@ -580,6 +580,8 @@ async function convert(project) {
                     case "comment": await handleBlock("comment", null, data); break
                     case "ltOrEqual": await handleBlock("ltOrEqual", 2, data); break
                     case "gtOrEqual": await handleBlock("gtOrEqual", 2, data); break
+                    case "atan2": await handleBlock("atan2", 1, data); break
+                    case "distanceFromXYToXY": await handleBlock("distanceFromXYToXY", 1, data); break
                 }
             }
         }
