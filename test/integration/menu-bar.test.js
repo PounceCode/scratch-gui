@@ -144,6 +144,29 @@ describe('Menu bar settings', () => {
         expect(await (await findByText('Esperanto', scope.menuBar)).isDisplayed()).toBe(true);
     });
 
+    test('Minifier menu toggles window.noMinify', async () => {
+        await loadUri(uri);
+        // ensure default
+        await driver.executeScript('window.noMinify = false;');
+        await clickXpath(SETTINGS_MENU_XPATH);
+        await clickText('Minifier', scope.menuBar);
+
+        // verify both options present
+        expect(await (await findByText('Enabled', scope.menuBar)).isDisplayed()).toBe(true);
+        expect(await (await findByText('Disabled', scope.menuBar)).isDisplayed()).toBe(true);
+
+        await clickText('Disabled', scope.menuBar);
+        const noMinify = await driver.executeScript('return window.noMinify;');
+        expect(noMinify).toBe(true);
+
+        // re-open and switch back
+        await clickXpath(SETTINGS_MENU_XPATH);
+        await clickText('Minifier', scope.menuBar);
+        await clickText('Enabled', scope.menuBar);
+        const noMinify2 = await driver.executeScript('return window.noMinify;');
+        expect(noMinify2).toBe(false);
+    });
+
     test('Menu labels hidden when width is equal to 1024', async () => {
         await loadUri(uri);
         await driver.manage()

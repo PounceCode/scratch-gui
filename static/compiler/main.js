@@ -24,16 +24,19 @@ async function compileToScratch() {
     console.log('compiling', toCompile);
     try {
         let compiled = await convert(toCompile);
+        let minified;
         console.log("costumes", extraCostumesToBeAdded)
 
-        console.log("minifying...")
-        minified = minifyScratchProject(compiled)
-        const totalSize = JSON.stringify(compiled).length
-        const compressedSize = JSON.stringify(minified).length
-        console.log("minfied, reduced by", Math.round((totalSize - compressedSize) / totalSize * 1000) / 10 + "%", "from", formatBytes(totalSize), "to", formatBytes(compressedSize))
-        
-        const output = minified
-        // const output = compiled
+        if (!window.noMinify) {
+            console.log("minifying...")
+            minified = minifyScratchProject(compiled)
+            const totalSize = JSON.stringify(compiled).length
+            const compressedSize = JSON.stringify(minified).length
+            console.log("minfied, reduced by", Math.round((totalSize - compressedSize) / totalSize * 1000) / 10 + "%", "from", formatBytes(totalSize), "to", formatBytes(compressedSize))
+        }
+
+        const output = minified ?? compiled
+
         console.log('compiled, saving...', output);
         const project = await vm.saveProjectSb3('blob', JSON.stringify(output), extraCostumesToBeAdded.map(c => ({ fileName: c.data.md5ext, fileContent: c.content })))
         download('compiled_project.sb3', project);

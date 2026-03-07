@@ -10,6 +10,7 @@ import TWAccentThemeMenu from './tw-theme-accent.jsx';
 import TWGuiThemeMenu from './tw-theme-gui.jsx';
 import TWBlocksThemeMenu from './tw-theme-blocks.jsx';
 import TWDesktopSettings from './tw-desktop-settings.jsx';
+import MinifierMenu from './minifier-menu.jsx';
 
 import menuBarStyles from './menu-bar.css';
 import styles from './settings-menu.css';
@@ -68,6 +69,7 @@ const SettingsMenu = ({
                     </React.Fragment>
                 )}
                 {onClickDesktopSettings && <TWDesktopSettings onClick={onClickDesktopSettings} />}
+                <MinifierMenu />
             </MenuSection>
         </MenuBarMenu>
     </MenuLabel>
