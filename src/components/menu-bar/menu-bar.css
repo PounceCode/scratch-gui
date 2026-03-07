@@ -46,8 +46,9 @@
     opacity: 0;
 }
 .scratch-logo {
-    height:  1.6rem;
+    height: 2rem;
     vertical-align: middle;
+    margin-left: 0.5rem;
 }
 
 .scratch-logo.clickable {

@@ -520,6 +520,13 @@ class MenuBar extends React.Component {
                 )}
             >
                 <div className={styles.mainMenu}>
+                    <img
+                        id="logo_img"
+                        className={styles.scratchLogo}
+                        src="/favicon.ico"
+                        draggable={false}
+                        alt="ThunderBlocks Logo"
+                    />
                     <div className={styles.fileGroup}>
                         {this.props.errors.length > 0 && <div>
                             <MenuLabel
