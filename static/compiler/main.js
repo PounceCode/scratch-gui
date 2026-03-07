@@ -33,6 +33,7 @@ async function compileToScratch() {
         console.log("minfied, reduced by", Math.round((totalSize - compressedSize) / totalSize * 1000) / 10 + "%", "from", formatBytes(totalSize), "to", formatBytes(compressedSize))
         
         const output = minified
+        // const output = compiled
         console.log('compiled, saving...', output);
         const project = await vm.saveProjectSb3('blob', JSON.stringify(output), extraCostumesToBeAdded.map(c => ({ fileName: c.data.md5ext, fileContent: c.content })))
         download('compiled_project.sb3', project);

@@ -1,10 +1,14 @@
 function minifyScratchProject(project) {
-    project = structuredClone(project)
+    project = structuredClone(project);
     const safeChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     
-    function getShortId(index) {
+    let globalIdCount = 0; 
+    const idMap = {};   
+    const nameMap = {}; 
+
+    function getShortId() {
+        let n = globalIdCount++;
         let res = '';
-        let n = index;
         do {
             res = safeChars[n % safeChars.length] + res;
             n = Math.floor(n / safeChars.length) - 1;
@@ -12,30 +16,23 @@ function minifyScratchProject(project) {
         return res;
     }
 
-    let globalIdCount = 0; 
-    const idMap = {};   
-    const nameMap = {}; 
-    const procMap = {};
-
-    // 1. Identify "Reserved Names" (Monitored variables/lists)
     const reservedNames = new Set();
     if (project.monitors) {
         project.monitors.forEach(m => {
-            if (m.params && m.params.VARIABLE) reservedNames.add(m.params.VARIABLE);
-            if (m.params && m.params.LIST) reservedNames.add(m.params.LIST);
+            if (m.params) {
+                if (m.params.VARIABLE) reservedNames.add(m.params.VARIABLE);
+                if (m.params.LIST) reservedNames.add(m.params.LIST);
+            }
         });
     }
 
-    // Helper to get next ID that doesn't conflict with a visible variable name
     function getSafeNextId() {
         let candidate;
-        do {
-            candidate = getShortId(globalIdCount++);
-        } while (reservedNames.has(candidate)); // Skip if ID matches a visible name
+        do { candidate = getShortId(); } while (reservedNames.has(candidate));
         return candidate;
     }
 
-    // --- STEP 1: Map Variables, Lists, and Broadcasts ---
+    // --- STEP 1: Map Variables, Lists, and Broadcasts (Global/Local) ---
     project.targets.forEach(target => {
         ['variables', 'lists', 'broadcasts'].forEach(type => {
             if (!target[type]) return;
@@ -46,12 +43,10 @@ function minifyScratchProject(project) {
                     idMap[oldId] = shortId;
                     const originalName = Array.isArray(data) ? data[0] : data;
                     
-                    // Keep original name for broadcasts or monitored items
-                    if (type === 'broadcasts' || reservedNames.has(originalName)) {
-                        nameMap[oldId] = originalName; 
-                    } else {
-                        nameMap[oldId] = shortId; 
-                    }
+                    // Preserve names for monitored variables or broadcasts
+                    nameMap[oldId] = (type === 'broadcasts' || reservedNames.has(originalName)) 
+                        ? originalName 
+                        : shortId;
                 }
                 const newId = idMap[oldId];
                 newDict[newId] = (type === 'broadcasts') ? nameMap[oldId] : [nameMap[oldId], data[1]];
@@ -60,49 +55,72 @@ function minifyScratchProject(project) {
         });
     });
 
-    // --- STEP 2: Map Custom Block Names ---
-    project.targets.forEach(target => {
-        if (!target.blocks) return;
-        for (const block of Object.values(target.blocks)) {
-            if (!Array.isArray(block) && block.mutation && block.mutation.proccode) {
-                const oldCode = block.mutation.proccode;
-                if (!procMap[oldCode]) {
-                    const placeholders = oldCode.match(/%[sb]/g) || [];
-                    const shortName = getSafeNextId();
-                    procMap[oldCode] = shortName + (placeholders.length > 0 ? " " + placeholders.join(" ") : "");
-                }
-            }
-        }
-    });
-
-    // --- STEP 3: Map Blocks ---
+    // --- STEP 2: Map Blocks and Scoped Procedures ---
     project.targets.forEach(target => {
         if (!target.blocks) return;
         const blockIdMap = {};
-        const newBlocks = {};
+        const localProcMap = {}; // Scopes procedure names per sprite
+        const localParamMap = {}; // Maps old parameter names to new ones within this sprite
 
-        for (const oldBlockId in target.blocks) {
-            blockIdMap[oldBlockId] = getSafeNextId();
+        // Pass 1: Pre-generate IDs and identify procedure/parameter renames
+        for (const [oldId, block] of Object.entries(target.blocks)) {
+            blockIdMap[oldId] = getSafeNextId();
+            
+            if (!Array.isArray(block) && (block.opcode === 'procedures_prototype' || (block.mutation && block.mutation.proccode))) {
+                const mutation = block.mutation;
+                if (mutation && mutation.proccode) {
+                    // Minify Proccode
+                    if (!localProcMap[mutation.proccode]) {
+                        const placeholders = mutation.proccode.match(/%[sb]/g) || [];
+                        localProcMap[mutation.proccode] = getSafeNextId() + (placeholders.length > 0 ? " " + placeholders.join(" ") : "");
+                    }
+                    
+                    // Minify Argument Names (Parameters)
+                    if (mutation.argumentnames) {
+                        const argNames = JSON.parse(mutation.argumentnames);
+                        const newArgNames = argNames.map(name => {
+                            if (!localParamMap[name]) localParamMap[name] = getSafeNextId();
+                            return localParamMap[name];
+                        });
+                        mutation.argumentnames = JSON.stringify(newArgNames);
+                    }
+                }
+            }
         }
 
-        for (const [oldBlockId, block] of Object.entries(target.blocks)) {
-            const newId = blockIdMap[oldBlockId];
+        // Pass 2: Reconstruct blocks
+        const newBlocks = {};
+        for (const [oldId, block] of Object.entries(target.blocks)) {
+            const newId = blockIdMap[oldId];
+            
             if (Array.isArray(block)) {
-                if ((block[0] === 11 || block[0] === 12 || block[0] === 13) && idMap[block[2]]) {
-                    block[1] = nameMap[block[2]]; 
-                    block[2] = idMap[block[2]];   
+                const cloned = [...block];
+                if ((cloned[0] >= 11 && cloned[0] <= 13) && idMap[cloned[2]]) {
+                    cloned[1] = nameMap[cloned[2]]; 
+                    cloned[2] = idMap[cloned[2]];   
                 }
-                newBlocks[newId] = block;
+                newBlocks[newId] = cloned;
                 continue;
             }
 
             const newBlock = { ...block };
             if (newBlock.next) newBlock.next = blockIdMap[newBlock.next];
             if (newBlock.parent) newBlock.parent = blockIdMap[newBlock.parent];
-            if (newBlock.mutation && newBlock.mutation.proccode) {
-                newBlock.mutation.proccode = procMap[newBlock.mutation.proccode];
+
+            // Update Argument Reporters (The "temp variables" of procedures)
+            if (newBlock.opcode.startsWith('argument_reporter_')) {
+                const oldParamName = newBlock.fields.VALUE[0];
+                if (localParamMap[oldParamName]) {
+                    newBlock.fields.VALUE[0] = localParamMap[oldParamName];
+                }
             }
 
+            // Update Mutations (Procedures)
+            if (newBlock.mutation && newBlock.mutation.proccode) {
+                newBlock.mutation.proccode = localProcMap[newBlock.mutation.proccode];
+            }
+
+            // Update Inputs and Fields
             if (newBlock.inputs) {
                 for (const inputName in newBlock.inputs) {
                     const inputArr = newBlock.inputs[inputName];
@@ -110,10 +128,10 @@ function minifyScratchProject(project) {
                         if (typeof inputArr[i] === 'string' && blockIdMap[inputArr[i]]) {
                             inputArr[i] = blockIdMap[inputArr[i]]; 
                         } else if (Array.isArray(inputArr[i])) {
-                            const innerObj = inputArr[i];
-                            if ((innerObj[0] === 11 || innerObj[0] === 12 || innerObj[0] === 13) && idMap[innerObj[2]]) {
-                                innerObj[1] = nameMap[innerObj[2]];
-                                innerObj[2] = idMap[innerObj[2]];
+                            const inner = inputArr[i];
+                            if ((inner[0] >= 11 && inner[0] <= 13) && idMap[inner[2]]) {
+                                inner[1] = nameMap[inner[2]];
+                                inner[2] = idMap[inner[2]];
                             }
                         }
                     }
@@ -123,7 +141,7 @@ function minifyScratchProject(project) {
             if (newBlock.fields) {
                 for (const fieldName in newBlock.fields) {
                     const fieldArr = newBlock.fields[fieldName];
-                    if (fieldArr && fieldArr.length === 2 && idMap[fieldArr[1]]) {
+                    if (fieldArr && fieldArr.length >= 2 && idMap[fieldArr[1]]) {
                         fieldArr[0] = nameMap[fieldArr[1]]; 
                         fieldArr[1] = idMap[fieldArr[1]];   
                     }
@@ -134,15 +152,14 @@ function minifyScratchProject(project) {
         target.blocks = newBlocks;
     });
 
-    // --- STEP 4: Update Monitors ---
+    // --- STEP 3: Update Monitors ---
     if (project.monitors) {
         project.monitors.forEach(monitor => {
-            const oldId = monitor.id;
             if (monitor.params) {
-                if (monitor.params.VARIABLE !== undefined) monitor.params.VARIABLE = nameMap[oldId] || monitor.params.VARIABLE;
-                if (monitor.params.LIST !== undefined) monitor.params.LIST = nameMap[oldId] || monitor.params.LIST;
+                if (monitor.params.VARIABLE !== undefined) monitor.params.VARIABLE = nameMap[monitor.id] || monitor.params.VARIABLE;
+                if (monitor.params.LIST !== undefined) monitor.params.LIST = nameMap[monitor.id] || monitor.params.LIST;
             }
-            if (idMap[oldId]) monitor.id = idMap[oldId];
+            if (idMap[monitor.id]) monitor.id = idMap[monitor.id];
         });
     }
 
