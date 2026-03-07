@@ -441,15 +441,19 @@ class MenuBar extends React.Component {
     }
 
     handleCompile() {
-        function randomIntFromInterval(min, max) { // min and max included 
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        }
+
         // Set state to loading
         this.setState({ isCompiling: true }, async () => {
             try {
-                await new Promise(resolve => setTimeout(resolve, randomIntFromInterval(200, 250)));
+                const compileStart = performance.now()
                 // Execute the compilation
                 await compileToScratch();
+
+                const compileEnd = performance.now()
+                const compileTime = compileEnd - compileStart
+                if (compileTime < 200) {
+                    await new Promise(resolve => setTimeout(resolve, 200 - compileTime));
+                }
             } catch (e) {
                 console.error("Compilation failed:", e);
             } finally {
