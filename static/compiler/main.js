@@ -19,7 +19,7 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(decimals)) + ' ' + sizes[i];
 }
 
-async function compileToScratch() {
+async function compileToScratch(projectTitle) {
     const toCompile = JSON.parse(vm.toJSON());
     console.log('compiling', toCompile);
     try {
@@ -39,7 +39,7 @@ async function compileToScratch() {
 
         console.log('compiled, saving...', output);
         const project = await vm.saveProjectSb3('blob', JSON.stringify(output), extraCostumesToBeAdded.map(c => ({ fileName: c.data.md5ext, fileContent: c.content })))
-        download('compiled_project.sb3', project);
+        download((projectTitle || 'Compiled Project') + '.sb3', project);
         console.log("saved")
     } catch (e) {
         console.log("compilation error", e)

@@ -447,7 +447,7 @@ class MenuBar extends React.Component {
             try {
                 const compileStart = performance.now()
                 // Execute the compilation
-                await compileToScratch();
+                await compileToScratch(this.props.projectTitle);
 
                 const compileEnd = performance.now()
                 const compileTime = compileEnd - compileStart
